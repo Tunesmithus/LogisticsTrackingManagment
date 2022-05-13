@@ -20,7 +20,7 @@ namespace LogisticsManagement.AppLogic.Repositories
 
         public void Update(Driver driver)
         {
-            context.Update(driver);
+            context.Drivers.Update(driver);
         }
     }
 }

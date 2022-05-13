@@ -125,7 +125,7 @@ namespace LogisticsManagement.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Brokers");
+                    b.ToTable("Brokers", (string)null);
                 });
 
             modelBuilder.Entity("LogisticsManagement.Data.Dispatcher", b =>
@@ -145,7 +145,7 @@ namespace LogisticsManagement.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Dispatchers");
+                    b.ToTable("Dispatchers", (string)null);
                 });
 
             modelBuilder.Entity("LogisticsManagement.Data.Driver", b =>
@@ -213,7 +213,7 @@ namespace LogisticsManagement.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Drivers");
+                    b.ToTable("Drivers", (string)null);
                 });
 
             modelBuilder.Entity("LogisticsManagement.Data.Load", b =>
@@ -282,7 +282,7 @@ namespace LogisticsManagement.Data.Migrations
 
                     b.HasIndex("TruckId");
 
-                    b.ToTable("Loads");
+                    b.ToTable("Loads", (string)null);
                 });
 
             modelBuilder.Entity("LogisticsManagement.Data.Trailer", b =>
@@ -324,7 +324,7 @@ namespace LogisticsManagement.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Trailers");
+                    b.ToTable("Trailers", (string)null);
                 });
 
             modelBuilder.Entity("LogisticsManagement.Data.Truck", b =>
@@ -367,7 +367,7 @@ namespace LogisticsManagement.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Trucks");
+                    b.ToTable("Trucks", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>

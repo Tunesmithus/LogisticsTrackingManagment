@@ -10,6 +10,8 @@ namespace LogisticsManagement.Data
     {
         public TrailerType TrailerType { get; set; }
 
+        //public string TypeOfTrailer { get; set; }
+
         public List<Load> Loads { get; set; }
     }
 }

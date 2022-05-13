@@ -4,13 +4,20 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>List of Drivers</h1>
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">   
+             <h2>Driver List</h2>
+        </div>
+        <div class="col-6 text-end">   
+             <p>
+                <a asp-action="Create" class="btn btn-primary">Create New</a>
+            </p>
+        </div>
+    </div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table table-bordered table-striped">
-    <thead>
+<table id ="tblData" class="table table-bordered table-striped">
+    <thead class="table-primary">
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.FirstName)
@@ -27,11 +34,11 @@
             <th>
                 @Html.DisplayNameFor(model => model.DriverPay)
             </th>
-            <th></th>
+            <th @*width="35%"*@></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+@*@foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.FirstName)
@@ -48,7 +55,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.DriverPay)
             </td>
-            <td>
+            <td class="text-center">
                 <a asp-controller="Drivers" asp-action="Edit" class="btn btn-primary" asp-route-id=@item.Id>
                     <i class="bi bi-pencil-square"></i>
                     Edit
@@ -65,5 +72,10 @@
             </td>
         </tr>
 }
-    </tbody>
+    </tbody>*@
 </table>
+</div>
+
+@section Scripts{
+    <script src="~/js/driver.js"></script>
+}

@@ -1,9 +1,18 @@
 ﻿@if (TempData["success"] != null)
 {
-    <div class="alert alert-success d-flex align-items-center" role="alert">
-      <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-      <div>
-        <h3><i class="bi bi-check-lg"></i>@TempData["success"]</h3>
-      </div>
-    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript">
+       toastr.success('@TempData["success"]')
+    </script>
+}
+
+@if (TempData["error"] != null)
+{
+    
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript">
+       toastr.error('@TempData["error"]')
+    </script>
 }

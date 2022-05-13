@@ -22,7 +22,7 @@ namespace LogisticsManagement.AppLogic.Repositories
 
         }
 
-        public void AddAsync(T entity)
+        public void Add(T entity)
         {
             dbSet.Add(entity);
         }

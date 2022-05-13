@@ -4,68 +4,63 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Add Driver Details</h1>
-
-<hr />
+<div class="container p-3">
 <div class="row">
     <div class="col-md-6 offset-1 ">
         <br />  
             <div> 
-                <h3><span class="badge bg-secondary col-md-6">Driver Details</span></h3>
+                <h3><span class="badge bg-secondary col-md-12">Driver Details</span></h3>
             </div>
             <hr />
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
+            <div class="form-group col-8 mb-3">
                 <label asp-for="FirstName" class="control-label"></label>
                 <input asp-for="FirstName" class="form-control" />
                 <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
-            <br />
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="LastName" class="control-label"></label>
                 <input asp-for="LastName" class="form-control" />
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
-            <br />
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="Email" class="control-label"></label>
                 <input asp-for="Email" class="form-control" />
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="PhoneNumber" class="control-label"></label>
                 <input asp-for="PhoneNumber" class="form-control" />
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="DateOfBirth" class="control-label"></label>
                 <input asp-for="DateOfBirth" class="form-control" />
                 <span asp-validation-for="DateOfBirth" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="ApplicationDate" class="control-label"></label>
                 <input asp-for="ApplicationDate" class="form-control" />
                 <span asp-validation-for="ApplicationDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="HireDate" class="control-label"></label>
                 <input asp-for="HireDate" class="form-control" />
                 <span asp-validation-for="HireDate" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="EmergencyContact" class="control-label"></label>
                 <input asp-for="EmergencyContact" class="form-control" />
                 <span asp-validation-for="EmergencyContact" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3">
                 <label asp-for="EmergencyContactPhone" class="control-label"></label>
                 <input asp-for="EmergencyContactPhone" class="form-control" />
                 <span asp-validation-for="EmergencyContactPhone" class="text-danger"></span>
             </div>
-            <br />  
             <div> 
-                <h3><span class="badge bg-secondary col-md-8 text-center">Address</span></h3>
+                <h3><span class="col-12 badge bg-secondary text-center">Address</span></h3>
             </div>
             <hr />
             <div class="form-group">
@@ -80,8 +75,9 @@
             </div>
             <div class="form-group">
                 <label asp-for="State" class="control-label"></label>
-                <input asp-for="State" class="form-control" />
-                <span asp-validation-for="State" class="text-danger"></span>
+                <select asp-for ="State" class = "form-select" asp-items ="@(new SelectList(ViewBag.StateList, "", ""))">
+                    <option disabled selected>--Select State--</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="ZipCode" class="control-label"></label>
@@ -90,7 +86,7 @@
             </div>
             <br />  
             <div> 
-                <h3><span class="badge bg-secondary col-md-8">Driver Pay</span></h3>
+                <h3><span class="badge bg-secondary col-md-12">Driver Pay</span></h3>
             </div>
             <hr />
             <div class="form-group">
@@ -100,7 +96,7 @@
             </div>
             <br />  
             <div> 
-                <h3><span class="badge bg-secondary col-md-8">Notes</span></h3>
+                <h3><span class="badge bg-secondary col-md-12">Notes</span></h3>
             </div>
             <hr />
 
@@ -116,6 +112,7 @@
             </div>
         </form>
     </div>
+</div>
 </div>
 
 

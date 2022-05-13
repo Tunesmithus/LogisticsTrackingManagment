@@ -12,7 +12,7 @@ namespace LogisticsManagement.AppLogic.Contracts
         IEnumerable<T> GetAll();
         T GetFirstOrDefault(Expression<Func<T, bool>> filter);
 
-        void AddAsync(T entity);
+        void Add(T entity);
 
         void Remove(T entity);
 

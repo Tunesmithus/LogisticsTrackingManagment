@@ -4,52 +4,195 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - LogisticsTrackingSoftware</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/bootswatchTheme.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="~/LogisticsTrackingSoftware.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="//cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css" />
+
 </head>
-<body>
+<body class="d-flex flex-column min-vh-100">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-warning border-bottom box-shadow mb-3">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">LogisticsTrackingSoftware</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Drivers" asp-action="Index">Drivers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
-                    <partial name="_LoginPartial" />
-                </div>
+         <!--Horizontal Navigation Bar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><i class="bi bi-globe2"></i> Logistics</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link active" asp-action="Index" asp-controller="Home">Home
+            <span class="visually-hidden">(current)</span>
+          </a>
+        </li>
+        
+        <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-controller="Drivers" asp-action="Index">Drivers</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Equipment</a>
+            <div class="dropdown-menu">
+            <a class="dropdown-item" asp-area="" asp-controller="Truck" asp-action="Index">Trucks</a>
+            <a class="dropdown-item" asp-area="" asp-controller="Trailer" asp-action="Index">Trailers</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">Separated link</a>
             </div>
-        </nav>
+        </li>
+      </ul>
+      <partial name ="_LoginPartial"/>
+      <form class="d-flex">
+        <input class="form-control me-sm-2" type="text" placeholder="Search your trips, loads and more">
+        <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="bi bi-search"></i></button>
+      </form>
+    </div>
+  </div>
+</nav>
+        
     </header>
-    <div class="container">
+     <!--SideBar Navigation-->
+     <div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-light">
+            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
+                <a href="/" class="d-flex align-items-center pb-2 mb-md-0 me-md-auto text-dark text-decoration-none">
+                    <span class="fs-5 d-none d-sm-inline">DashBoard</span>
+                </a>
+                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
+                    <li class="nav-item">
+                        <a asp-action="Index" asp-controller="Home" class="nav-link align-middle px-0" text-dark">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-speedometer2"></i><span class="ms-1 d-none d-sm-inline text-dark">Trips</span> </a>
+                        <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a asp-action="Create" asp-controller="Load" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Add</span> 1 </a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Existing</span> 2 </a>
+                            </li>
+                        </ul>
+                    </li>
+           
+                    <li>
+                        <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                             <i class="fs-4 bi bi-coin"></i></i> <span class="ms-1 d-none d-sm-inline text-dark">Brokers</span> </a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a asp-action="Create" asp-controller="Broker" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Add Broker</span> 1</a>
+                            </li>
+                            <li>
+                                <a asp-action="Index" asp-controller="Broker" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Existing Broker</span> 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a asp-action="Index" asp-controller="Dispatcher" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Dispatcher</span>
+                        </a>
+                    </li>
+                     <li>
+                        <a href="#" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-people"></i><span class="ms-1 d-none d-sm-inline text-dark">Customers</span> </a>
+                    </li>
+                    <li>
+                        <a href="#" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi bi-receipt"></i></i><span class="ms-1 d-none d-sm-inline text-dark">Invoices</span> </a>
+                    </li>
+                    
+                    <li>
+                        <a href="#submenu3" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                            <i class="fs-4 bi-grid"></i> <span class="ms-1 d-none d-sm-inline text-dark">Products</span> </a>
+                            <ul class="collapse nav flex-column ms-1" id="submenu3" data-bs-parent="#menu">
+                            <li class="w-100">
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Product</span> 1</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Product</span> 2</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Product</span> 3</a>
+                            </li>
+                            <li>
+                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Product</span> 4</a>
+                            </li>
+                        </ul>
+                    </li>
+                    
+                    <li>
+                        <a  asp-action="Index" asp-controller="Drivers" class="nav-link px-0">
+                        <span class="ms-1 d-none d-sm-inline text-dark">Drivers</span> </a>
+                    </li>
+                    <li>
+                        <a asp-action="Index" asp-controller="Trailer" class="nav-link px-0">
+                        <span class="ms-1 d-none d-sm-inline text-dark">Trailers</span> </a>
+                    </li>
+                    <li>
+                        <a asp-action="Index" asp-controller="Truck" class="nav-link px-0">
+                        <span class="ms-1 d-none d-sm-inline text-dark">Trucks</span> </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link px-0">
+                        <span class="ms-1 d-none d-sm-inline text-dark">Settlements</span> </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link px-0">
+                        <span class="ms-1 d-none d-sm-inline text-dark">Account</span> </a>
+                    </li>
+                    <li>
+                        <a href="#" class="nav-link px-0">
+                        <span class="ms-1 d-none d-sm-inline text-dark">Settings</span> </a>
+                    </li>
+                </ul>
+                <hr>
+                @*<div class="dropdown pb-4">
+                    
+                    <ul class="dropdown-menu dropdown-menu-dark text-small shadow">
+                        <li><a class="dropdown-item" href="#">New project...</a></li>
+                        <li><a class="dropdown-item" href="#">Settings</a></li>
+                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    </ul>
+                </div>*@
+            </div>
+        </div>
+        <div class="col py-3">
+            <div class="container">
         <main role="main" class="pb-3">
             <partial name = "_Notifications"/>
             @RenderBody()
         </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
+        
+    </div>
+        </div>
+        </div>
+        </div>
+
+        <footer class="border-top footer bg-primary text-muted ">
         <div class="container">
             &copy; 2022 - LogisticsTrackingSoftware - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

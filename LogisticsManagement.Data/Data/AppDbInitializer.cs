@@ -284,11 +284,11 @@ namespace LogisticsManagement.Data.Data
                                 LoadPay = 2500M,
                                 CargoWeight = 36000,
                                 CargoDescription = "Load of nuts and bolts",
-                                BrokerId = 7,
-                                DriverId = 1,
-                                TruckId =  1,
-                                TrailerId = 1,
-                                DispatcherId = 1,                              
+                                BrokerId = 14,
+                                DriverId = 5,
+                                TruckId =  5,
+                                TrailerId = 5,
+                                DispatcherId = 3,                              
                             },
 
                             new Load()
@@ -303,11 +303,11 @@ namespace LogisticsManagement.Data.Data
                                 LoadPay = 1800M,
                                 CargoWeight = 33000,
                                 CargoDescription = "Load of nuts and bolts",
-                                BrokerId = 8,
-                                DriverId = 1,
-                                TruckId =  1,
-                                TrailerId = 1,
-                                DispatcherId = 1,
+                                BrokerId = 13,
+                                DriverId = 5,
+                                TruckId =  5,
+                                TrailerId = 5,
+                                DispatcherId = 3,
                             },
 
                             new Load()
@@ -322,11 +322,11 @@ namespace LogisticsManagement.Data.Data
                                 LoadPay = 1800M,
                                 CargoWeight = 33000,
                                 CargoDescription = "Load of nuts and bolts",
-                                BrokerId = 9,
-                                DriverId = 1,
-                                TruckId =  1,
-                                TrailerId = 1,
-                                DispatcherId = 1,
+                                BrokerId = 13,
+                                DriverId = 5,
+                                TruckId =  5,
+                                TrailerId = 5,
+                                DispatcherId = 3,
                             },
 
                             new Load()
@@ -341,13 +341,12 @@ namespace LogisticsManagement.Data.Data
                                 LoadPay = 1800M,
                                 CargoWeight = 33000,
                                 CargoDescription = "Load of nuts and bolts",
-                                BrokerId = 10,
-                                DriverId = 1,
-                                TruckId =  1,
-                                TrailerId = 1,
-                                DispatcherId = 1,
+                                BrokerId = 13,
+                                DriverId = 5,
+                                TruckId =  5,
+                                TrailerId = 5,
+                                DispatcherId = 3,
                             }
-
 
                         });
                         context.SaveChanges();

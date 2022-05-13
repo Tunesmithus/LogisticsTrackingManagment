@@ -1,0 +1,43 @@
+﻿@model IEnumerable<LogisticsManagement.Data.Truck>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="row pt-4">
+        <div class="col-6">   
+             <h2>Trucks List</h2>
+        </div>
+        <div class="col-6 text-end">   
+             <p>
+                <a asp-action="Create" class="btn btn-primary">Create New</a>
+            </p>
+        </div>
+    </div>
+<table id="tblData" class="table table-bordered table-striped">
+    <thead class="table-primary">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Year)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.Make)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Model)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EquipmentNumber)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+</table>
+</div>
+
+@section Scripts{
+
+    <script src="~/js/truck.js"></script>
+}

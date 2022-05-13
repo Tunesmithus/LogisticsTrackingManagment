@@ -17,9 +17,19 @@ namespace LogisticsManagement.AppLogic.Repositories
         {
             this.context = context;
             Driver = new DriversRepository(context);
+            Truck = new TrucksRepository(context);
+            Trailer = new TrailerRepository(context);
+            Broker = new BrokerRepository(context);
+            Dispatcher = new DispatcherRepository(context);
         }
 
         public IDriversRepository Driver { get; private set; }
+
+        public ITrucksRepository Truck { get; private set; }
+
+        public ITrailerRepository Trailer { get; private set; }
+        public IBrokerRepository Broker { get; private set; }
+        public IDispatcherRepository Dispatcher { get; private set; }
 
         public void Save()
         {
