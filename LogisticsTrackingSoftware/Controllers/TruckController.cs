@@ -54,54 +54,26 @@ namespace LogisticsManagement.Web.Controllers
         }
 
 
-        // GET: TruckController/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            var truck = unitOfWork.Truck.GetFirstOrDefault(x => x.Id == id);
-            if (id == 0 || id == null)
-            {
-                return NotFound();
-            }
-
-            if (truck == null)
-            {
-                return NotFound();
-            }
-
-
-            return View(truck);
-        }
-
-        // POST: TruckController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int? id)
-        {
-            var truck = unitOfWork.Truck.GetFirstOrDefault(x => x.Id == id);
-
-            if (id == 0 || id == null)
-            {
-                return NotFound();
-            }
-
-            if (truck == null)
-            {
-                return NotFound();
-            }
-
-            unitOfWork.Truck.Remove(truck);
-            unitOfWork.Save();
-            TempData["success"] = "Truck deleted successfully";
-            return RedirectToAction(nameof(Index));
-
-        }
-
         #region API Calls
         [HttpGet]
         public IActionResult GetAll()
         {
             var truckList = unitOfWork.Truck.GetAll();
             return Json(new { data = truckList });
+        }
+
+        [HttpDelete]
+        public IActionResult Delete(int? id)
+        {
+            var truck = unitOfWork.Truck.GetFirstOrDefault(x => x.Id == id);
+            if (truck == null)
+            {
+                return Json(new { success = false, message = "Error while deleting" });
+            }
+
+            unitOfWork.Truck.Remove(truck);
+            unitOfWork.Save();
+            return Json(new { success = true, message = "Delete successful" });
         }
 
         [HttpGet]

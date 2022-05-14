@@ -19,6 +19,7 @@ namespace LogisticsManagement.Data
         [Required]
         [Display(Name ="Dispatch Fee")]
         [Range(0.01, 0.20)]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal DispatchFee { get; set; }
 
         [NotMapped]

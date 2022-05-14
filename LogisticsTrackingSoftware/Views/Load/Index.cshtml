@@ -1,4 +1,4 @@
-﻿@model IEnumerable<LogisticsManagement.Data.Broker>
+﻿@model IEnumerable<LogisticsManagement.Data.Load>
 
 @{
     ViewData["Title"] = "Index";
@@ -7,7 +7,7 @@
 <div class="container">
     <div class="row pt-4">
         <div class="col-6">   
-             <h2>Broker List</h2>
+             <h2>Load List</h2>
         </div>
         <div class="col-6 text-end">   
              <p>
@@ -16,28 +16,29 @@
         </div>
     </div>
 
-<table id ="tblData" class="table table-bordered table-striped">
+<table id="tblData" class="table table-bordered table-striped">
     <thead class="table-primary">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.CompanyName)
+                @Html.DisplayNameFor(model => model.StartDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.City)
+                @Html.DisplayNameFor(model => model.LoadNumber)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.State)
+                @Html.DisplayNameFor(model => model.LoadedMiles)
             </th>
+           
             <th>
-                @Html.DisplayNameFor(model => model.ZipCode)
+                @Html.DisplayNameFor(model => model.LoadPay)
             </th>
+      
             <th></th>
         </tr>
     </thead>
 </table>
- 
 </div>
 
 @section Scripts{
-    <script src="~/js/broker.js"></script>
+    <script src="~/js/load.js"></script>
 }

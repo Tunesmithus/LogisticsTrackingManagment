@@ -16,6 +16,8 @@ namespace LogisticsManagement.AppLogic.Contracts
         IBrokerRepository Broker { get; }
         IDispatcherRepository Dispatcher { get; }
 
+        ILoadRepository Load { get; }
+
         void Save();
     }
 }

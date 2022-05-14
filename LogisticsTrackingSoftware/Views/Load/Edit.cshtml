@@ -1,0 +1,130 @@
+﻿@model LogisticsManagement.Data.Load
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="container p-3">
+       
+<div class="row">
+    <div class="col-md-8 offset-1 ">
+        <br />  
+            <div>
+                <h3><span class="badge bg-secondary col-12"> Update Trip Details</span></h3>
+            </div>
+            <hr />
+        <form method="Post" asp-action="Edit">
+            <input asp-for="@Model.Id" hidden/>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3">
+                <label asp-for="LoadNumber" class="control-label"></label>
+                <input asp-for="LoadNumber" class="form-control" />
+                <span asp-validation-for="LoadNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3 col">
+                <label asp-for="StartDate" class="control-label"></label>
+                <input asp-for="StartDate" class="form-control" />
+                <span asp-validation-for="StartDate" class="text-danger"></span>
+            </div>
+           <div class="form-group mb-3">
+                <label asp-for="EndDate" class="control-label"></label>
+                <input asp-for="EndDate" class="form-control" />
+                <span asp-validation-for="EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="DriverId" class="control-label"></label>
+                <select asp-for ="DriverId" class = "form-select" asp-items ="ViewBag.DriverList">
+                    <option disabled selected>--Select Driver--</option>
+                </select>
+            </div>
+             <div>
+                <h3><span class="badge bg-secondary col-12">Update Rig Details</span></h3>
+            </div>
+            <hr />
+             <div class="form-group mb-3">
+                <label asp-for="TruckId" class="control-label"></label>
+                <select asp-for ="TruckId" class = "form-select" asp-items ="ViewBag.TruckList">
+                    <option disabled selected>--Select Truck--</option>
+                </select>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="TrailerId" class="control-label"></label>
+                <select asp-for ="TrailerId" class = "form-select" asp-items ="ViewBag.TrailerList">
+                    <option disabled selected>--Select Trailer--</option>
+                </select>
+            </div>
+
+            <div>
+                <h3><span class="badge bg-secondary col-12">Update Mileage</span></h3>
+            </div>
+            <hr />
+            <div class="form-group mb-3">
+                <label asp-for="LoadedMiles" class="control-label"></label>
+                <input asp-for="LoadedMiles" class="form-control" />
+                <span asp-validation-for="LoadedMiles" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="UnloadedMiles" class="control-label"></label>
+                <input asp-for="UnloadedMiles" class="form-control" />
+                <span asp-validation-for="UnloadedMiles" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="BobTailMiles" class="control-label"></label>
+                <input asp-for="BobTailMiles" class="form-control" />
+                <span asp-validation-for="BobTailMiles" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="OtherMiles" class="control-label"></label>
+                <input asp-for="OtherMiles" class="form-control" />
+                <span asp-validation-for="OtherMiles" class="text-danger"></span>
+            </div>
+             <div>
+                <h3><span class="badge bg-secondary col-12"> Update Revenue Details</span></h3>
+            </div>
+            <hr />
+            <div class="form-group mb-3">
+                <label asp-for="DispatcherId" class="control-label"></label>
+                <select asp-for ="DispatcherId" class = "form-select" asp-items ="ViewBag.DispatcherList">
+                    <option><a asp-for ="Create" asp></a></option>
+                    <option disabled selected>--Select Dispatcher--</option>
+                </select>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="BrokerId" class="control-label"></label> 
+                <a class="text-end" asp-action="Create" asp-controller="Broker"><i class="bi bi-plus"></i>Broker</a>
+                <select asp-for ="BrokerId" class = "form-select" asp-items ="ViewBag.BrokerList">
+                    <option disabled selected>--Select Broker--</option>
+                </select>
+                
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="CargoWeight" class="control-label"></label>
+                <input asp-for="CargoWeight" class="form-control" />
+                <span asp-validation-for="CargoWeight" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <label asp-for="CargoDescription" class="control-label"></label>
+                <textarea asp-for="CargoDescription" class="form-control"></textarea>
+                <span asp-validation-for="CargoDescription" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                 <a class="btn btn-outline-danger" asp-action="Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+
+
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    
+}
+
+

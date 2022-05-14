@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,7 +12,7 @@ namespace LogisticsManagement.Data
         public TrailerType TrailerType { get; set; }
 
         //public string TypeOfTrailer { get; set; }
-
+        [ValidateNever]
         public List<Load> Loads { get; set; }
     }
 }

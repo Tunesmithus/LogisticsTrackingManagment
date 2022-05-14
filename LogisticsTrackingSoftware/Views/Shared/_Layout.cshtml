@@ -77,7 +77,7 @@
                                 <a asp-action="Create" asp-controller="Load" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Add</span> 1 </a>
                             </li>
                             <li>
-                                <a href="#" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Existing</span> 2 </a>
+                                <a asp-action="Index" asp-controller="Load" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Existing</span> 2 </a>
                             </li>
                         </ul>
                     </li>
@@ -96,7 +96,7 @@
                     </li>
                     <li class="nav-item">
                         <a asp-action="Index" asp-controller="Dispatcher" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Dispatcher</span>
+                            <i class="FS-4 bi bi-telephone"></i> <span class="ms-1 d-none d-sm-inline text-dark">Dispatcher</span>
                         </a>
                     </li>
                      <li>
@@ -167,8 +167,8 @@
                 </div>*@
             </div>
         </div>
-        <div class="col py-3">
-            <div class="container">
+        <div class="col py-0">
+            <div class="container-fluid">
         <main role="main" class="pb-3">
             <partial name = "_Notifications"/>
             @RenderBody()

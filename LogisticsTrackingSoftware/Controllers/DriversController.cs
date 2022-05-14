@@ -17,31 +17,11 @@ namespace LogisticsManagement.Web.Controllers
         // GET: DriverController
         public IActionResult Index()
         {
-            //var driversList = unitOfWork.Driver.GetAll();
-            //return View(driversList);
 
             return View();
         }
 
-        // GET: DriverController/Details/5
-        //public IActionResult Details(int? id)
-        //{
-        //    var driver = unitOfWork.Driver.GetFirstOrDefault(x => x.Id == id);
-
-        //    if (id == 0 || id == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    if (driver == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(driver);
-        //}
-
-        // GET: DriverController/Create
+        
         public IActionResult Create()
         {
             var StateList = StaticList.GetStates().Select(x => x.Text);
@@ -65,22 +45,7 @@ namespace LogisticsManagement.Web.Controllers
             return View(driver);
         }
 
-        // GET: DriverController/Edit/5
-        //public IActionResult Edit(int? id)
-        //{
-        //    var driver = unitOfWork.Driver.GetFirstOrDefault(x => x.Id == id);
-        //    if (id == null || id == 0)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    if (driver == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return View(driver);
-        //}
+       
 
         // POST: DriverController/Edit/5
         [HttpPost]

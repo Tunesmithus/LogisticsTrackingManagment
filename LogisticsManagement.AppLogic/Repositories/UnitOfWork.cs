@@ -21,6 +21,7 @@ namespace LogisticsManagement.AppLogic.Repositories
             Trailer = new TrailerRepository(context);
             Broker = new BrokerRepository(context);
             Dispatcher = new DispatcherRepository(context);
+            Load = new LoadRepository(context);
         }
 
         public IDriversRepository Driver { get; private set; }
@@ -30,6 +31,7 @@ namespace LogisticsManagement.AppLogic.Repositories
         public ITrailerRepository Trailer { get; private set; }
         public IBrokerRepository Broker { get; private set; }
         public IDispatcherRepository Dispatcher { get; private set; }
+        public ILoadRepository Load { get; private set; }
 
         public void Save()
         {

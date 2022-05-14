@@ -28,7 +28,7 @@ function loadDataTable() {
                     </a>
                     `
                 },
-                "width": "10%"
+                "width": "5%"
 
             }
         ]

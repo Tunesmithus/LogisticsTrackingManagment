@@ -21,15 +21,12 @@ function loadDataTable() {
                     return `
                     <a href="/Trailer/Edit?id=${data}" class="btn btn-primary">
                         <i class="bi bi-pencil-square"></i>
-                         Edit
                      </a>
                     <a  href="/Trailer/Details?id=${data}" class="btn btn-info" >
                         <i class="bi bi-info-circle-fill"></i>
-                        Details
                     </a>
                     <a onClick=Delete('/Product/Delete/${data}') class="btn btn-danger">
                         <i class="bi bi-trash-fill"></i>
-                        Delete
                     </a>
 
                     

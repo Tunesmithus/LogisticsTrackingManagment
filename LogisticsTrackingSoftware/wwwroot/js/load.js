@@ -7,28 +7,30 @@ $(document).ready(function () {
 function loadDataTable() {
     dataTable = $("#tblData").DataTable({
         "ajax": {
-            "url": "/Truck/GetAll"
+            "url": "/Load/GetAll"
         },
         "columns": [
-            { "data": "year", "width": "10%" },
-            { "data": "make", "width": "10%" },
-            { "data": "model", "width": "10%" },
-            { "data": "equipmentNumber", "width": "10%" },
+            { "data": "startDate", "width": "10%" },
+            /*{ "data": "endDate", "width": "10%" },*/
+            { "data": "loadNumber", "width": "5%" },
+            { "data": "loadedMiles", "width": "5%" },
+            { "data": "loadPay", "width": "5%" },
+            
             {
                 "data": "id",
                 "render": function (data) {
                     return `
-                    <a href="/Truck/Edit?id=${data}" class="btn btn-primary">
+                    <a href="/Load/Edit?id=${data}" class="btn btn-primary">
                         <i class="bi bi-pencil-square"></i>
+                         
                      </a>
-                    <a  href="/Truck/Details?id=${data}" class="btn btn-info" >
+                     <a  href="/Load/Details?id=${data}" class="btn btn-info" >
                         <i class="bi bi-info-circle-fill"></i>
                     </a>
-                    <a onClick=Delete('/Truck/Delete/${data}') class="btn btn-danger">
+                    <a onClick=Delete("/Load/Delete/${data}") class="btn btn-danger">
                         <i class="bi bi-trash-fill"></i>
+                        
                     </a>
-
-                    
                     `
                 },
                 "width": "10%"
