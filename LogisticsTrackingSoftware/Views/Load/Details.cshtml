@@ -1,0 +1,120 @@
+﻿@model LogisticsManagement.Data.Load
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+
+
+<input class="@Model.Id" hidden/>
+<div class="container pt-3">
+    <div class = "row">
+    <div class="col">
+        <h2>Details for @Model.LoadNumber</h2>
+    </div>
+    <a asp-action="Index" asp-controller="Load" class="text-end text-danger px-4"><i class="bi bi-arrow-left-circle">
+    </i>Back To List</a>
+    </div>
+    <br/>
+      <div class="col">
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="card bg-light">
+              <div class="card-body">
+                <h5 class="card-title"><b>Profit</b></h5>
+                <h5 class="card-text fs-6">
+                  Pay:<span class="float-end">@Model.LoadPay.ToString("c")</span>
+                </h5>
+                <h5 class="card-text fs-6">
+                  RPM: <span class="float-end">@((Model.LoadPay/Model.LoadedMiles).ToString("c"))</span>
+                </h5>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="card">
+              <div class="card-body bg-light">
+                <h5 class="card-title"><b>Miles</b></h5>
+                <h5 class="card-text fs-6">
+                  Paid:<span class="float-end">@Model.LoadedMiles.ToString("0.00")</span>
+                </h5>
+                <h5 class="card-text fs-6">
+                  Unpaid: <span class="float-end">@((Model.UnloadedMiles + Model.OtherMiles + Model.BobTailMiles).ToString("0.00"))</span>
+                </h5>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="card">
+              <div class="card-body bg-light">
+                <h5 class="card-title"><b>Driver</b></h5>
+                <h5 class="card-text fs-6">
+                  Name:<span class="float-end">@Model.Driver.FirstName @Model.Driver.LastName</span>
+                </h5>
+                <h5 class="card-text fs-6">
+                  Pay: <span class="float-end">@((Model.Driver.DriverPay * Model.LoadPay).ToString("c"))</span>
+                </h5>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="card">
+              <div class="card-body bg-light">
+                <h5 class="card-title"><b>Date</b></h5>
+                <h5 class="card-text fs-6">
+                  Start Date:<span class="float-end">@Model.StartDate.ToShortDateString()</span>
+                </h5>
+                <h5 class="card-text fs-6">
+                  End Date:<span class="float-end">@Model.EndDate.ToShortDateString()</span>
+                </h5>
+                <a href="#" class="btn btn-primary">Go somewhere</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <hr />
+        <div class="row">
+          <div class="col-4">
+            <h5 class="badge bg-secondary">Truck: <span> @Model.Truck.EquipmentNumber</span></h5>
+          </div>
+          <div class="col-4">
+            <h5 class="badge bg-secondary">Trailer: <span> @Model.Trailer.EquipmentNumber</span></h5>
+          </div>
+          <div class="col-4">
+            <h5 class="badge bg-secondary">Dispatcher: <span> @Model.Dispatcher.Name</span></h5>
+          </div>
+        </div>
+        <div>
+          <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Load Number</th>
+                  <th>Broker</th>
+                  <th>Cargo Weight</th>
+                  <th>Load Revenue</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>@Model.LoadNumber</td>
+                  <td>@Model.Broker.CompanyName</td>
+                  <td>@Model.CargoWeight.ToString("0.00")</td>
+                  <td>@Model.LoadPay.ToString("c")</td>
+                </tr>
+              </tbody>
+          </table>
+        </div>
+        <hr/>
+        <div>
+          <label asp-for="CargoDescription" class="col-6 offset-1">Cargo Description</label>
+          <textarea asp-for="CargoDescription" class="col-6 offset-1" readonly></textarea>
+        </div>
+        </div>
+      </div>
+    
+

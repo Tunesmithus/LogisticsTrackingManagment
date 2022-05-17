@@ -11,7 +11,7 @@
     <div class="col-md-8 offset-1 ">
         <br />  
             <div>
-                <h3><span class="badge bg-secondary col-12"> Update Trip Details</span></h3>
+                <h3><span class="badge bg-secondary col-12"> Update Trip @Model.LoadNumber</span></h3>
             </div>
             <hr />
         <form method="Post" asp-action="Edit">
@@ -92,7 +92,7 @@
             </div>
             <div class="form-group mb-3">
                 <label asp-for="BrokerId" class="control-label"></label> 
-                <a class="text-end" asp-action="Create" asp-controller="Broker"><i class="bi bi-plus"></i>Broker</a>
+                <a class="float-end" asp-action="Create" asp-controller="Broker"><i class="bi bi-plus-circle-fill"></i>Add Broker</a>
                 <select asp-for ="BrokerId" class = "form-select" asp-items ="ViewBag.BrokerList">
                     <option disabled selected>--Select Broker--</option>
                 </select>
@@ -109,7 +109,7 @@
                 <span asp-validation-for="CargoDescription" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Update" class="btn btn-primary" />
                  <a class="btn btn-outline-danger" asp-action="Index">Back to List</a>
             </div>
         </form>

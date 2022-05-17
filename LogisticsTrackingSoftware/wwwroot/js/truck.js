@@ -10,7 +10,7 @@ function loadDataTable() {
             "url": "/Truck/GetAll"
         },
         "columns": [
-            { "data": "year", "width": "10%" },
+            { "data": "year", "width": "5%" },
             { "data": "make", "width": "10%" },
             { "data": "model", "width": "10%" },
             { "data": "equipmentNumber", "width": "10%" },

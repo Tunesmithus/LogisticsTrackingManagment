@@ -1,4 +1,5 @@
 ﻿using LogisticsManagement.AppLogic.Contracts;
+using LogisticsManagement.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -15,19 +16,14 @@ namespace LogisticsManagement.Web.Controllers
         }
 
         // GET: LoadController
-        public ActionResult Index()
+        public IActionResult Index()
         {
             return View();
         }
 
-        // GET: LoadController/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
 
         // GET: LoadController/Create
-        public ActionResult Create()
+        public IActionResult Create()
         {
             var DriverList = unitOfWork.Driver.GetAll().Select(x => new SelectListItem
             (text: x.FirstName, value: x.Id.ToString()));
@@ -60,59 +56,37 @@ namespace LogisticsManagement.Web.Controllers
         // POST: LoadController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult Create(Load load)
         {
-            try
+            if (!ModelState.IsValid == true)
             {
+                unitOfWork.Load.Add(load);
+                unitOfWork.Save();
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(load);
+            
         }
 
-        // GET: LoadController/Edit/5
-        public ActionResult Edit(int id)
+        // GET: LoadController/Details/5
+        [HttpGet]
+        public IActionResult Details(int? id)
         {
-            return View();
+            var loadDetails = unitOfWork.Load.GetFirstOrDefault(x => x.Id == id, includeProperties: "Driver,Trailer,Broker,Truck,Dispatcher");
+            if (id == 0 || id == null)
+            {
+                return NotFound();
+            }
+
+            if (loadDetails == null)
+            {
+                return NotFound();
+            }
+
+            return View(loadDetails);
         }
 
-        // POST: LoadController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: LoadController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: LoadController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
 
         #region API CALLS
         [HttpGet]
@@ -121,6 +95,83 @@ namespace LogisticsManagement.Web.Controllers
             var loadList = unitOfWork.Load.GetAll();
             return Json( new { data = loadList });
         }
+
+        // GET: LoadController/Edit/5
+        [HttpGet]
+        public IActionResult Edit(int? id)
+        {
+            var load = unitOfWork.Load.GetFirstOrDefault(x => x.Id == id);
+
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            if (load == null)
+            {
+                return NotFound();
+            }
+
+            return View(load);
+        }
+
+        // POST: LoadController/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Load load)
+        {
+            if (ModelState.IsValid == true)
+            {
+                unitOfWork.Load.update(load);
+                unitOfWork.Save();
+                TempData["success"] = "Load updated successfully";
+                return RedirectToAction(nameof(Index));
+            }
+
+            return View(load);
+        }
+
+        //// GET: LoadController/Details/5
+        //[HttpGet]
+        //public IActionResult Details(int? id)
+        //{
+        //    var loadDetails = unitOfWork.Load.GetFirstOrDefault(x => x.Id == id);
+        //    if (id == 0 || id == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    if (loadDetails == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return View(loadDetails);
+        //}
+
+        // POST: LoadController/Delete/5
+        [HttpDelete]
+        [ValidateAntiForgeryToken]
+        public IActionResult Delete(int? id)
+        {
+            var load = unitOfWork.Load.GetFirstOrDefault(x => x.Id == id);
+
+            if (id == 0 || id == null)
+            {
+                return NotFound();
+            }
+
+            if (load == null)
+            {
+                return NotFound();
+            }
+
+            unitOfWork.Load.Remove(load);
+            unitOfWork.Save();
+            TempData["success"] = "Load removed successfully";
+            return RedirectToAction(nameof(Index));
+        }
+
 
 
         #endregion

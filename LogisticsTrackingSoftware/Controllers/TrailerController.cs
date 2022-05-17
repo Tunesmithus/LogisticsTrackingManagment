@@ -145,6 +145,20 @@ namespace LogisticsManagement.Web.Controllers
             return View(trailer);
         }
 
+        [HttpDelete]
+        public IActionResult Delete(int? id)
+        {
+            var trailer = unitOfWork.Trailer.GetFirstOrDefault(x => x.Id == id);
+            if (trailer == null)
+            {
+                return Json(new { success = false, message = "Error while deleting" });
+            }
+
+            unitOfWork.Trailer.Remove(trailer);
+            unitOfWork.Save();
+            return Json(new { success = true, message = "Delete successful" });
+        }
+
 
         #endregion
     }

@@ -10,7 +10,7 @@ namespace LogisticsManagement.AppLogic.Contracts
     public interface IGenericRepository<T>
     {
         IEnumerable<T> GetAll();
-        T GetFirstOrDefault(Expression<Func<T, bool>> filter);
+        T GetFirstOrDefault(Expression<Func<T, bool>> filter, string? includeProperties = null);
 
         void Add(T entity);
 

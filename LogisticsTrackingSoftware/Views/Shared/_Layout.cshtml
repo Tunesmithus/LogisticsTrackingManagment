@@ -30,12 +30,12 @@
         </li>
         
         <li class="nav-item">
-            <a class="nav-link" asp-area="" asp-controller="Drivers" asp-action="Index">Drivers</a>
+            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="About">About</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Tools">Tools</a>
         </li>
-        <li class="nav-item dropdown">
+        @*<li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Equipment</a>
             <div class="dropdown-menu">
             <a class="dropdown-item" asp-area="" asp-controller="Truck" asp-action="Index">Trucks</a>
@@ -43,7 +43,7 @@
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Separated link</a>
             </div>
-        </li>
+        </li>*@
       </ul>
       <partial name ="_LoginPartial"/>
       <form class="d-flex">
@@ -71,20 +71,20 @@
                     </li>
                     <li>
                         <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-speedometer2"></i><span class="ms-1 d-none d-sm-inline text-dark">Trips</span> </a>
+                            <i class="fs-4 bi-speedometer2"></i><span class="ms-1 d-none d-sm-inline text-dark">Trips</span></a>
                         <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                             <li class="w-100">
-                                <a asp-action="Create" asp-controller="Load" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Add</span> 1 </a>
+                                <a asp-action="Create" asp-controller="Load" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Add Trip</span></a>
                             </li>
                             <li>
-                                <a asp-action="Index" asp-controller="Load" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Existing</span> 2 </a>
+                                <a asp-action="Index" asp-controller="Load" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Existing Trip</span></a>
                             </li>
                         </ul>
                     </li>
            
                     <li>
                         <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                             <i class="fs-4 bi bi-coin"></i></i> <span class="ms-1 d-none d-sm-inline text-dark">Brokers</span> </a>
+                             <i class="fs-4 bi bi-coin"></i><span class="ms-1 d-none d-sm-inline text-dark">Brokers</span> </a>
                             <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                             <li class="w-100">
                                 <a asp-action="Create" asp-controller="Broker" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Add Broker</span> 1</a>
@@ -129,7 +129,8 @@
                     
                     <li>
                         <a  asp-action="Index" asp-controller="Drivers" class="nav-link px-0">
-                        <span class="ms-1 d-none d-sm-inline text-dark">Drivers</span> </a>
+                        <span class="ms-1 d-none d-sm-inline text-dark">Drivers</span></a>
+                        
                     </li>
                     <li>
                         <a asp-action="Index" asp-controller="Trailer" class="nav-link px-0">

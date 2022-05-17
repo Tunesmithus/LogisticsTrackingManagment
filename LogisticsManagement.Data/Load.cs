@@ -16,16 +16,20 @@ namespace LogisticsManagement.Data
         [DisplayName("Load Number")]
         public string LoadNumber { get; set; }
 
+        [Required]
         [DisplayName("Start Date")]
         [DisplayFormat(DataFormatString = "dd/MM/yyyy")]
         public DateTime StartDate { get; set; }
 
+        [Required]
         [DisplayName("End Date")]
         public DateTime EndDate { get; set; }
 
+        [Required]
         [DisplayName("Paid Miles")]
         public int LoadedMiles { get; set; }
 
+        [Required]
         [DisplayName("Unpaid Miles")]
         public int UnloadedMiles { get; set; }
 
@@ -35,6 +39,7 @@ namespace LogisticsManagement.Data
         [DisplayName("Other Miles")]
         public int OtherMiles { get; set; }
 
+        [Required]
         [Column(TypeName ="decimal(18,2)")]
         [DisplayName("Load Pay")]
         public decimal LoadPay { get; set; }
@@ -47,31 +52,35 @@ namespace LogisticsManagement.Data
 
 
         //Relationships
+        [Required]
         [DisplayName("Broker")]
         public int BrokerId { get; set; }
 
         [ForeignKey("BrokerId")]
         public Broker Broker { get; set; }
 
+        [Required]
         [DisplayName("Driver")]
         public int DriverId { get; set; }
 
         [ForeignKey("DriverId")]
         public Driver Driver { get; set; }
 
+        [Required]
         [DisplayName("Truck")]
         public int TruckId { get; set; }
 
         [ForeignKey("TruckId")]
         public Truck Truck { get; set; }
 
+        [Required]
         [DisplayName("Trailer")]
         public int TrailerId { get; set; }
 
         [ForeignKey("TrailerId")]
         public Trailer Trailer { get; set; }
 
-
+        [Required]
         [DisplayName("Dispatcher")]
         public int DispatcherId { get; set; }
 

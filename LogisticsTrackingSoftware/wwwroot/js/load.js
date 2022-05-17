@@ -10,7 +10,7 @@ function loadDataTable() {
             "url": "/Load/GetAll"
         },
         "columns": [
-            { "data": "startDate", "width": "10%" },
+            { "data": "startDate", "width": "5%" },
             /*{ "data": "endDate", "width": "10%" },*/
             { "data": "loadNumber", "width": "5%" },
             { "data": "loadedMiles", "width": "5%" },
@@ -24,16 +24,17 @@ function loadDataTable() {
                         <i class="bi bi-pencil-square"></i>
                          
                      </a>
-                     <a  href="/Load/Details?id=${data}" class="btn btn-info" >
+                    <a href="/Load/Details?id=${data}" class="btn btn-info">
                         <i class="bi bi-info-circle-fill"></i>
-                    </a>
+
+                     </a>
                     <a onClick=Delete("/Load/Delete/${data}") class="btn btn-danger">
                         <i class="bi bi-trash-fill"></i>
                         
                     </a>
                     `
                 },
-                "width": "10%"
+                "width": "5%"
 
             }
         ]
