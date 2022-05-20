@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using LogisticsManagement.Common.StaticUtility;
 
 namespace LogisticsManagement.Web.Areas.Identity.Pages.Account
 {
@@ -110,6 +111,10 @@ namespace LogisticsManagement.Web.Areas.Identity.Pages.Account
             [Required(ErrorMessage = "Company name is required")]
             [Display(Name = "Company Name")]
             public string CompanyName { get; set; }
+
+            [Required(ErrorMessage = "Phone number is required")]
+            [Display(Name = "Phone Number")]
+            public string PhoneNumber { get; set; }
         }
 
 
@@ -129,11 +134,19 @@ namespace LogisticsManagement.Web.Areas.Identity.Pages.Account
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
                 await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
+
+                user.CompanyName = Input.CompanyName;
+                user.FirstName = Input.FirstName;
+                user.LastName = Input.LastName;
+                user.PhoneNumber = Input.PhoneNumber;
+                
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");
+
+                    await _userManager.AddToRoleAsync(user, StaticDetail.Role_User);
 
                     var userId = await _userManager.GetUserIdAsync(user);
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);

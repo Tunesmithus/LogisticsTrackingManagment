@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Rate Per Mile";
+}
+
+<header>
+      <h1 class="text-info my-3">Trucking Resource Center</h1>
+      <h4 class="text-secondary my-4">Rate Per Mile Tool</h4>
+    </header>
+    <form id="ratePerMileForm" class="offset-1">
+       
+        <div class="mb-3 form-group row col-6">
+            <label for="formGroupExampleInput" class="form-label">Paid Miles</label>
+            <input type="number" class="form-control" id="paid-Miles" placeholder="Actual miles of trip">
+        </div>
+       <div class="mb-3 form-group row col-6">
+           <label for="formGroupExampleInput2" class="form-label">Unpaid Miles</label>
+           <input type="number" class="form-control" id="unpaid-Miles" placeholder="DeadHead, Bobtail or other miles">
+       </div>
+       <div class="mb-3 form-group row col-6">
+           <label for="formGroupExampleInput2" class="form-label">Load Pay</label>
+           <input type="number" class="form-control" id="load-Pay" placeholder="Revenue load pays">
+       </div>
+       <div class="mb-3 row col-6">
+           <label for="formGroupExampleInput2" class="form-label">Rate Per Mile</label>
+           <input type="number" class="form-control" id="rate-Per-Mile" readonly>
+       </div>
+       <div class="form-group row col-6">
+       <input class="btn btn-primary form-control" value="Calculate" type="submit" />
+        </div>
+       
+    </form>
+    
+
+    </section>
+
+   
+    @section Scripts{
+    <script src="/js/ratePerMile.js"></script>
+}
+

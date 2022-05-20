@@ -1,0 +1,61 @@
+﻿@{
+    ViewData["Title"] = "TruckingTools";
+}
+
+<header>
+      <h1 class="text-info my-3">Trucking Resource Center</h1>
+      <h4 class="text-secondary my-4">Trucking Calculator Tools</h4>
+    </header>
+    <section>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+  <div class="col">
+    <div class="card h-100">
+      <img src="/images/GasStation.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+          <a asp-action="RatePerMile" asp-controller="Home">
+              <h5 class="card-title">Rate Per Mile</h5>
+          </a>
+        <p class="card-text">A free tool to help you calculate your cost per mile including
+                breakdowns of expenses like fixed costs and variable costs.</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img src="/images/countingMoney.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+          <a asp-action="FuelSurcharge" asp-controller="Home">
+              <h5 class="card-title">Fuel Surcharge Calculator</h5>
+          </a>
+        
+        <p class="card-text">A fuel surcharge calculator for calculating your the fuel
+                surcharges in your trucking business based on baseline fuel
+                price and MPG.</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card h-100">
+      <img src="/images/semiTruck.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+          <a asp-action="" asp-controller="">
+            <h5 class="card-title">Owner Operator Calculator</h5>
+          </a>
+        <p class="card-text">The best trucking calculator tool including calculators for
+                revenue per mile, monthly and annual mileage, and fixed and
+                variable costs.</p>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </div>
+    </div>
+  </div>
+</div>
+    </section>
+

@@ -4,6 +4,7 @@ using LogisticsTrackingSoftware.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LogisticsManagement.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220520032021_DefaultUsersAndRoles")]
+    partial class DefaultUsersAndRoles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,17 +106,17 @@ namespace LogisticsManagement.Data.Migrations
                             Id = "5a98663f-baa0-448d-8a26-7c6218a568d4",
                             AccessFailedCount = 0,
                             CompanyName = "Major Key Trucking",
-                            ConcurrencyStamp = "c1b7acd1-a362-4d01-8ddb-4f214497ca56",
+                            ConcurrencyStamp = "994a1743-7e85-438b-8b88-72f4e1191265",
                             Email = "admin@localhost.com",
-                            EmailConfirmed = true,
+                            EmailConfirmed = false,
                             FirstName = "Channing",
                             LastName = "Robertson",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAENCS5f0+sZVAUIJRKWmXSTUqEzpFHBbXRpu/s8rj5Ai9biY7JhlFnUkITGRqqwJaow==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEF5t3krl5UT+VHLsfb+UP4xryLI50tdSYTmImesoJFUTZT1iPO5Q7UwKwmGE/iCQug==",
                             PhoneNumber = "6013108018",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "75618f2d-a595-404e-aeb5-29d9e475bdb9",
+                            SecurityStamp = "97e99cbd-1e69-4450-9ae8-bbd6f5316453",
                             TwoFactorEnabled = false
                         },
                         new
@@ -122,17 +124,17 @@ namespace LogisticsManagement.Data.Migrations
                             Id = "94c39c00-deb8-4e14-9482-7509a60ad572",
                             AccessFailedCount = 0,
                             CompanyName = "Major Key Trucking",
-                            ConcurrencyStamp = "545f8c69-7a9f-48ca-b47f-cc26afeb2e80",
+                            ConcurrencyStamp = "a19ef2c4-6857-4e34-9056-78c6cf39f0de",
                             Email = "user@localhost.com",
-                            EmailConfirmed = true,
+                            EmailConfirmed = false,
                             FirstName = "Kingston",
                             LastName = "Robertson",
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEKKwvLg39d+NB9Q9Il5+DUGW7Gq6gsfc0RW2Dc+NDfJQislVBSRd28rB9+mkiS+lSw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEH63Ia/8rgzTgWBskQayZyZJxXnVZs2PJGQ+rE9sh872cDqllQBr7K5uZnKYF5e1eA==",
                             PhoneNumber = "6013108018",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "181307e2-6554-4e8f-ba54-e204ca2a9f90",
+                            SecurityStamp = "14d1a509-b6b8-4631-ab7c-2c27fc0a0579",
                             TwoFactorEnabled = false
                         });
                 });
@@ -438,14 +440,14 @@ namespace LogisticsManagement.Data.Migrations
                         new
                         {
                             Id = "cac43a6e-f7bb-4448-baaf-ladd431ccbbf",
-                            ConcurrencyStamp = "aa7c4188-2271-4a90-8f70-76a689cb3e70",
+                            ConcurrencyStamp = "418a5b71-4c5f-492b-bf7c-2c8f3651862a",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "34c39c00-deb8-4e14-9482-7509a60ad573",
-                            ConcurrencyStamp = "4734d6ba-1fe4-4414-992b-ab59cb158003",
+                            ConcurrencyStamp = "45abff3b-93f9-44c4-ad34-9a554646fe85",
                             Name = "User",
                             NormalizedName = "USER"
                         });

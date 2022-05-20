@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Fuel Surcharge";
+}
+
+    
+
+    <section class="container">
+     <header>
+      <h1 class="text-info my-3">Fuel Surcharge Calculator</h1>
+      <h5 class="text-secondary my-4">Channing Robertson</h5>
+      <p>
+          You need two values to accurately calculate your business’ fuel surcharge fees. They are:
+      </p>
+      <ol class=" list-group-numbered">
+          <li>
+              <b>Baseline fuel price per gallon:</b>This value is the diesel price per gallon you used when you calculated your estimated costs when setting your rates. It was probably the average cost per fuel at the time you set your rates.
+          </li>
+          <li>
+              <b>Fuel mileage (MPG):</b> This value is the average fuel mileage you get with your truck.
+          </li>
+      </ol>
+      <p>
+          With these two values you should be able to use the Fuel Surcharge Calculator below to get an accurate look at your Fuel Surcharge per mile.
+      </p>
+    </header>
+    <form class="fuelSurchargeCalculatorForm">
+        <table class="table table-bordered table-striped">
+        <tbody>
+            <tr>
+                <th width="100%" class="bg-primary text-white text-center">Fuel Surcharge Calculator</th>
+            </tr>
+            <tr>
+                <th>1. Enter baseline fuel price per gallon<span class=float-end><input placeholder="$0.00" type="number" /></span></th>
+                
+            </tr>
+            <tr>
+                <th>2. Enter fuel mileage (MPG)<span class=float-end><input placeholder="$0.00" type="number" /></span></th>
+               
+            </tr>
+            <tr>
+                <th>Enter current fuel price per gallon<span class=float-end><input placeholder="$0.00" type="number"/></span></th>
+            </tr>
+            <tr>
+                <th>Your Fuel Surcharge (per mile)<span class=float-end><input placeholder="$0.00" type="number"/></span></th>
+            </tr>
+            <tr>
+                <td><input class="btn btn-primary form-control" type="submit" value="Calculate" /></td>
+            </tr>
+        </tbody>
+        </table>
+    </form>
+    </section>
+    <article>
+
+    </article>
+    
+    
+
+   
+
+   
+    @section Scripts{
+    <script src="/js/fuelSurcharge.js"></script>
+}
+

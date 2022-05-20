@@ -15,7 +15,7 @@ namespace LogisticsManagement.Common.StaticUtility
         public const string Role_Company = "Company";
 
         //Individual User
-        public const string Role_Individual = "Individual";
+        public const string Role_User = "User";
 
         //Employee of Company
         public const string Role_Employee = "Employee";

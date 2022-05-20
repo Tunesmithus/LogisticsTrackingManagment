@@ -1,4 +1,5 @@
 ﻿using LogisticsTrackingSoftware.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -23,6 +24,23 @@ namespace Replace.Controllers
             return View();
         }
         public IActionResult ContactUs()
+        {
+            return View();
+        }
+
+        
+
+        public IActionResult Resources()
+        {
+            return View();
+        }
+
+        public IActionResult RatePerMile()
+        {
+            return View();
+        }
+
+        public IActionResult FuelSurcharge()
         {
             return View();
         }

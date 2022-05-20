@@ -13,6 +13,14 @@ namespace LogisticsTrackingSoftware.Data
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
+            builder.ApplyConfiguration(new RoleSeedConfiguration());
+            builder.ApplyConfiguration(new UserSeedConfiguration());
+            builder.ApplyConfiguration(new UserRoleSeedConfiguration());
+        }
+
         public DbSet<Driver> Drivers { get; set; }
         public DbSet<Load> Loads { get; set; }
         public DbSet<Broker> Brokers { get; set; }
