@@ -27,6 +27,7 @@ namespace LogisticsTrackingSoftware.Data
         public DbSet<Dispatcher> Dispatchers { get; set; }
         public DbSet<Truck> Trucks { get; set; }
         public DbSet<Trailer> Trailers { get; set; }
+        public DbSet<Settlement> Settlements { get; set; }
 
        
     }

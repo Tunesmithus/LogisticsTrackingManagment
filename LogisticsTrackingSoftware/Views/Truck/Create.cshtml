@@ -15,45 +15,40 @@
             <hr />
         <form method="Post" asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            @*<div class="form-group mb-3 col">
-                <label asp-for="Year" class="control-label"></label>
-                <input asp-for="Year" class="form-control" />
-                <span asp-validation-for="Year" class="text-danger"></span>
-            </div>*@
-            <div class="form-group mb-3">
+            <div class="form-group mb-3 col-6">
                 <label asp-for="Year" class="control-label"></label>
                 <select asp-for ="Year" class = "form-select" asp-items ="@(new SelectList(ViewBag.YearList, "", ""))">
                     <option disabled selected>--Select Year--</option>
                 </select>
             </div>
-            <div class="form-group mb-3">
+            <div class="form-group mb-3 col-6">
                 <label asp-for="Make" class="control-label"></label>
                 <select asp-for ="Make" class = "form-select" asp-items ="@(new SelectList(ViewBag.TruckMakeList, "", ""))">
                     <option disabled selected>--Select Make--</option>
                 </select>
             </div>
            
-            <div class="form-group mb-3">
+            <div class="form-group mb-3 col-6">
                 <label asp-for="Model" class="control-label"></label>
                 <input asp-for="Model" class="form-control" />
                 <span asp-validation-for="Model" class="text-danger"></span>
             </div>
-            <div class="form-group mb-3">
+            <div class="form-group mb-3 col-4">
                 <label asp-for="EquipmentNumber" class="control-label"></label>
                 <input asp-for="EquipmentNumber" class="form-control" />
                 <span asp-validation-for="EquipmentNumber" class="text-danger"></span>
             </div>
-            <div class="form-group mb-3">
+            <div class="form-group mb-3 col-6">
                 <label asp-for="VinNumber" class="control-label"></label>
                 <input asp-for="VinNumber" class="form-control" />
                 <span asp-validation-for="VinNumber" class="text-danger"></span>
             </div>
-            <div class="form-group mb-3">
+            <div class="form-group mb-3 col-4">
                 <label asp-for="LicensePlateNumber" class="control-label"></label>
                 <input asp-for="LicensePlateNumber" class="form-control" />
                 <span asp-validation-for="LicensePlateNumber" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group mb-3 col-4">
                 <label asp-for="Color" class="control-label"></label>
                 <select asp-for ="Color" class = "form-select" asp-items ="@(new SelectList(ViewBag.ColorList, "", ""))">
                     <option disabled selected>--Select Color--</option>

@@ -1,11 +1,13 @@
 ﻿using LogisticsManagement.AppLogic.Contracts;
 using LogisticsManagement.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace LogisticsManagement.Web.Controllers
 {
+    [Authorize]
     public class LoadController : Controller
     {
         private readonly IUnitOfWork unitOfWork;

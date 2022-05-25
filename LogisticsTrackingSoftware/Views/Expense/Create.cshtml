@@ -1,0 +1,83 @@
+﻿@model LogisticsManagement.Data.Expense
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="container p-3">
+       
+<div class="row">
+    <div class="col-md-8 offset-1 ">
+        <br />  
+            <div class="bg-secondary round px-2 rounded">
+                <p class="fs-5 py-2"> Expense Details</p>
+            </div>
+            <hr />
+        <form method="Post" asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group mb-3 col-6">
+                <label asp-for="DateOfExpense" class="control-label"></label>
+                <input asp-for="DateOfExpense" class="form-control" />
+                <span asp-validation-for="DateOfExpense" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3 col-4">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" type="date" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+           <div class="form-group mb-3 col-4">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" type = "date" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3 col-8">
+                <label asp-for="ExpenseCategoryId" class="control-label"></label>
+                <select asp-for ="ExpenseCategoryId" class = "form-select" asp-items ="ViewBag.DriverList">
+                    <option disabled selected>--Select Category--</option>
+                </select>
+            </div>
+            <div class="form-group mb-3 col-8">
+                <label asp-for="DriverId" class="control-label"></label>
+                <select asp-for ="DriverId" class = "form-select" asp-items ="ViewBag.DriverList">
+                    <option disabled selected>--Select Driver--</option>
+                </select>
+            </div>
+             <div class="bg-secondary round px-2 rounded">
+                <p class="fs-5 py-2"> Rig Details</p>
+            </div>
+            <hr />
+             <div class="form-group mb-3 col-8">
+                <label asp-for="TruckId" class="control-label"></label>
+                <select asp-for ="TruckId" class = "form-select" asp-items ="ViewBag.TruckList">
+                    <option disabled selected>--Select Truck--</option>
+                </select>
+            </div>
+            <div class="form-group mb-3 col-8">
+                <label asp-for="TrailerId" class="control-label"></label>
+                <select asp-for ="TrailerId" class = "form-select" asp-items ="ViewBag.TrailerList">
+                    <option disabled selected>--Select Trailer--</option>
+                </select>
+            </div>
+
+            
+            <div class="form-group mb-3">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                 <a class="btn btn-outline-danger" asp-action="Index">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+</div>
+
+
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    
+}
+
+

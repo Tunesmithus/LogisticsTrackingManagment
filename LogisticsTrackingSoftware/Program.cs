@@ -10,7 +10,9 @@ using Microsoft.EntityFrameworkCore;
 
 
 // Add services to the container.
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(args); 
+
+//This code runs the application
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
@@ -26,6 +28,18 @@ builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 
 builder.Services.AddAutoMapper(typeof(MapperConfig));
+builder.Services.AddAuthentication().AddGoogle(options =>
+{
+    options.ClientId = "975242062915-3trdbv8c3ipjpoq75di4ef536jrunohh.apps.googleusercontent.com";
+    options.ClientSecret = "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";
+});
+
+builder.Services.AddAuthentication().AddFacebook(options =>
+{
+    options.AppId = "800134724694180";
+    options.AppSecret = "c7ae5190125cc18a65871f4dd6c4150";
+});
+
 
 
 

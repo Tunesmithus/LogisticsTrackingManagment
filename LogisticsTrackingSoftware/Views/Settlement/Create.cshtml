@@ -1,0 +1,217 @@
+﻿@model LogisticsManagement.Data.Settlement
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<form method="post" action="Create">
+<section>
+      <div class="my-3">
+        <a href="#"
+          ><h5 class="text-danger">
+            <i class="bi bi-caret-left-fill"></i>Discard Changes
+          </h5></a
+        >
+      </div>
+      <div class="mb-3">
+        <h2>Create Settlement</h2>
+      </div>
+      <div class="row">
+        <div>
+          <div class="bg-secondary round px-2 rounded">
+            <p class="fs-5 py-2">Settlement Details</p>
+          </div>
+          <br />
+          <br />
+        </div>
+        <div class="row mb-3">
+          <label asp-for="SettlementNumber" class="col-sm-2 col-form-label text-end"
+            >Reference</label>
+          <div class="col-sm-3">
+            <input type="text" class="form-control" id="inputEmail3" />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label asp-for="PayrollStartDate" class="col-sm-2 col-form-label text-end"
+            >Pay Week Start</label>
+          <div class="col-sm-3">
+            <input type="date" class="form-control" id="inputEmail3" />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label asp-for="PayrollEndDate" class="col-sm-2 col-form-label text-end"
+            >Pay Week End</label>
+          <div class="col-sm-3">
+            <input type="date" class="form-control" id="inputEmail3" />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label asp-for="DriverId" class="col-sm-2 col-form-label text-end"
+            >Driver</label>
+          <div class="col-sm-5">
+            <select asp-for="DriverId" class="form-select" asp-items="ViewBag.DriverList" id="inputEmail3">
+              <option disable selected>Select Driver</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label asp-for="TruckId" class="col-sm-2 col-form-label text-end"
+            >Truck</label>
+          <div class="col-sm-5">
+            <select asp-for="TruckId" class="form-select" asp-items="ViewBag.TruckList">
+              <option disable selected>Select Truck</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <label asp-for="DateCreated" class="col-sm-2 col-form-label text-end"
+            >Date</label>
+          <div class="col-sm-3">
+            <input type="date" class="form-control" id="" />
+          </div>
+        </div>
+        <div class="border row mb-3">
+          <label asp-for="DriverInternalNote" class="col-sm-2 col-form-label"
+            >Internal Notes</label>
+          <div class="py-3 col-sm-10">
+            <textarea
+              placeholder="Add internal note for this settlement"
+              class="form-control mb-2"
+              style="width: 60%"
+            ></textarea>
+            <p class="text-danger">*This note will not be seen by driver</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="bg-secondary round px-2 rounded">
+          <p class="fs-5 py-2">
+            Trips<span
+              ><button class="btn btn-primary btn-sm float-end">
+                Add Trips
+              </button></span
+            >
+          </p>
+        </div>
+        <!--Insert Popup Modal Here-->
+        <h5>Add modal syntax here</h5>
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <div>
+        <div class="bg-secondary round px-2 rounded">
+          <p class="fs-5 py-2">
+            Additional Driver Pay<span
+              ><button class="btn btn-primary btn-sm float-end">
+                Add Item
+              </button></span
+            >
+          </p>
+        </div>
+        Add driver pay to this settlement. This is commonly used for adjustments
+        that aren't tied to a trip.
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th style="width: 25%">Driver</th>
+              <th style="width: 35%">Description</th>
+              <th class="text-center" style="width: 15%">Payroll Rule</th>
+              <th style="width: 20%">Driver Pay</th>
+              <th>Remove</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <select asp-for="DriverId" asp-items="ViewBag.DriverList" class="form-select">
+                  <option disabled selected>Select Driver</option>
+                </select>
+              </td>
+              <td><input type="text" class="form-control" /></td>
+              <td class="text-center">Fixed Amount</td>
+              <td><input type="number" class="form-control" /></td>
+              <td>
+                <button class="btn btn-danger">
+                  <i class="bi bi-trash"></i>
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <br />
+        <br />
+      </div>
+      <div>
+        <div class="bg-secondary round px-2 rounded">
+          <p class="fs-5 py-2">
+            Reimbursements<span
+              ><button class="btn btn-primary btn-sm float-end">
+                Select Expenses
+              </button></span
+            >
+          </p>
+        </div>
+        <p>Add expenses that should be reimbursed to the driver.</p>
+      </div>
+      <br />
+      <br />
+      <div>
+        <div class="bg-secondary round px-2 rounded">
+          <p class="fs-5 py-2">
+            Deductions<span
+              ><button class="btn btn-primary btn-sm float-end">
+                Select Expenses
+              </button></span
+            >
+          </p>
+        </div>
+        <p>Add expenses that should be paid by the driver.</p>
+      </div>
+      <br />
+      <br />
+      <div>
+        <div class="bg-secondary round px-2 rounded">
+          <p class="fs-5 py-2">Summary</p>
+        </div>
+        <p>Previous Balance: <span>$0.00</span></p>
+        <p>Trip Driver Pay: <span>$0.00</span></p>
+        <p>Additional Driver Pay: <span>$0.00</span></p>
+        <p>Driver Pay Total: <span>$0.00</span></p>
+        <p>Reimbursements: <span>$0.00</span></p>
+        <p class="text-danger">
+          Deductions: <span class="text-danger">$0.00</span>
+        </p>
+        <p class="text-success">
+          <b>Settlement Total:</b><span class="text-success">$0.00</span>
+        </p>
+      </div>
+      <div>
+        <div class="bg-secondary round px-2 rounded">
+          <p class="fs-5 py-2">Notes For Driver</p>
+        </div>
+        <textarea
+          class="form-control"
+          placeholder="Add a note to the driver for this settlement"
+        ></textarea>
+      </div>
+      <br />
+      <br />
+      <div>
+        <div class="bg-secondary round px-3 py-3 rounded">
+          <a class="btn btn-primary">Create Settlement</a>
+          <a asp-action="Index" asp-controller="Settlement" class="btn btn-warning float-end">Back To List</a>
+        </div>
+      </div>
+      <br />
+      <br />
+      <br />
+      <br />
+      <br />
+    </section>
+    </form>
+<div>
+   
+</div>
+

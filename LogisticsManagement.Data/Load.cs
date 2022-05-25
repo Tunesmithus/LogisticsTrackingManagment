@@ -18,7 +18,8 @@ namespace LogisticsManagement.Data
 
         [Required]
         [DisplayName("Start Date")]
-        [DisplayFormat(DataFormatString = "dd/MM/yyyy")]
+        [DataType(DataType.Date)]
+
         public DateTime StartDate { get; set; }
 
         [Required]

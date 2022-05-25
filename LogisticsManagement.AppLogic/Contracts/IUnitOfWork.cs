@@ -18,6 +18,8 @@ namespace LogisticsManagement.AppLogic.Contracts
 
         ILoadRepository Load { get; }
 
+        ISettlementRepository Settlement { get; }
+
         void Save();
     }
 }
