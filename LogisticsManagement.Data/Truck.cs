@@ -12,6 +12,12 @@ namespace LogisticsManagement.Data
     {
         public string Model { get; set; }
 
+        [NotMapped]
+        public string FullVehicleDescription
+        {
+            get { return $"{Year} {Model} ({EquipmentNumber})"; }
+        }
+
         [ValidateNever]
         public List<Load> Loads { get; set; }
     }

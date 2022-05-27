@@ -23,6 +23,7 @@ namespace LogisticsManagement.AppLogic.Repositories
             Dispatcher = new DispatcherRepository(context);
             Load = new LoadRepository(context);
             Settlement = new SettlementRepository(context);
+            ExpenseType = new ExpenseTypeRepository(context);
         }
 
         public IDriversRepository Driver { get; private set; }
@@ -35,6 +36,8 @@ namespace LogisticsManagement.AppLogic.Repositories
         public ILoadRepository Load { get; private set; }
 
         public ISettlementRepository Settlement { get; private set; }
+
+        public IExpenseTypeRepository ExpenseType { get; private set; }
 
         public void Save()
         {

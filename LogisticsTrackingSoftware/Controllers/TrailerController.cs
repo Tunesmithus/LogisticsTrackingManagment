@@ -22,8 +22,11 @@ namespace LogisticsManagement.Web.Controllers
         }
 
         // GET: TrailerController/Create
-        public ActionResult Create()
+        public IActionResult Create()
         {
+            var YearList = StaticList.GetYearList().Select(x => x.Text);
+            ViewBag.YearList = YearList;
+
             var TrailerMakeList = StaticList.GetTrailerMakes().Select(x => x.Text);
             ViewBag.TrailerMakeList = TrailerMakeList;
             return View();
@@ -32,59 +35,21 @@ namespace LogisticsManagement.Web.Controllers
         // POST: TrailerController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult Create(Trailer trailer)
         {
-            try
+            if (ModelState.IsValid)
             {
+                unitOfWork.Trailer.Add(trailer);
+                unitOfWork.Save();
+                TempData["success"] = "Truck added successfully";
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(trailer);
+
         }
 
-        // GET: TrailerController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: TrailerController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: TrailerController/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: TrailerController/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        
 
         #region API Calls
         [HttpGet]

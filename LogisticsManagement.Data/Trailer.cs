@@ -14,6 +14,11 @@ namespace LogisticsManagement.Data
         [Display(Name ="Type")]
         public TrailerType TrailerType { get; set; }
 
+        public string FullTrailerDescription
+        {
+            get { return $"{Year} {Make} {TrailerType} ({EquipmentNumber})"; }
+        }
+
         //public string TypeOfTrailer { get; set; }
         [ValidateNever]
         public List<Load> Loads { get; set; }

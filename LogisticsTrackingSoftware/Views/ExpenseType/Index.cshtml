@@ -1,13 +1,13 @@
-﻿@model IEnumerable<LogisticsManagement.Data.Trailer>
-
+﻿@model LogisticsManagement.Data.ExpenseType
 @{
     ViewData["Title"] = "Index";
 }
 
+
 <div class="container">
     <div class="row pt-4">
         <div class="col-6">   
-             <h2>Trailer List</h2>
+             <h2> Expense List</h2>
         </div>
         <div class="col-6 text-end">   
              <p>
@@ -20,28 +20,23 @@
     <thead class="table-primary">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Year)
+                @Html.DisplayNameFor(model => model.ExpenseCategory)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Make)
+                @Html.DisplayNameFor(model => model.Description)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TrailerType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EquipmentNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.VinNumber)
-            </th>
-            <th></th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
-
 </table>
+ 
 </div>
 
 @section Scripts{
-    <script src="~/js/trailer.js"></script>
+    <script src="~/js/expenseType.js"></script>
 }
+
+
+
+

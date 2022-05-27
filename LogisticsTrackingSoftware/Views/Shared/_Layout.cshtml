@@ -39,15 +39,21 @@
         <li class="nav-item">
             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="ContactUs">Contact</a>
         </li>
-        @*<li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Equipment</a>
-            <div class="dropdown-menu">
-            <a class="dropdown-item" asp-area="" asp-controller="Truck" asp-action="Index">Trucks</a>
-            <a class="dropdown-item" asp-area="" asp-controller="Trailer" asp-action="Index">Trailers</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Separated link</a>
-            </div>
-        </li>*@
+        @{
+            if (User.IsInRole(StaticDetail.Role_Administrator))
+            {
+               <li class="nav-item dropdown">
+                   <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Administrator</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" asp-area="" asp-controller="ExpenseType" asp-action="Index">Expense Types</a>
+                   <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                   </div>
+                </li>                 
+            }
+        
+        }
+        
       </ul>
       <partial name ="_LoginPartial"/>
       <form class="d-flex">
@@ -103,9 +109,9 @@
                                 </ul>
                             </li>
                             <li>
-                                <a href="#submenu2" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                    <i class="fs-4 bi bi-coin"></i><span class="ms-1 d-none d-sm-inline text-dark">Brokers</span> </a>
-                                <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
+                                <a href="#submenu4" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                    <i class="fs-4 bi bi-coin"></i><span class="ms-1 d-none d-sm-inline text-dark">Expenses</span> </a>
+                                <ul class="collapse nav flex-column ms-1" id="submenu4" data-bs-parent="#menu">
                                     <li class="w-100">
                                         <a asp-action="Create" asp-controller="Expense" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Add Expense</span></a>
                                     </li>

@@ -22,7 +22,7 @@ namespace LogisticsManagement.Web.Controllers
 
 
         // GET: TruckController/Create
-        public ActionResult Create()
+        public IActionResult Create()
         {
             var TruckMakeList = StaticList.GetTruckMakes().Select(x => x.Text);
             ViewBag.TruckMakeList = TruckMakeList;
@@ -39,7 +39,7 @@ namespace LogisticsManagement.Web.Controllers
         // POST: TruckController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Truck truck)
+        public IActionResult Create(Truck truck)
         {
             if (ModelState.IsValid == true)
             {

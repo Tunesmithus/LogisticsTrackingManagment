@@ -15,27 +15,37 @@ namespace LogisticsManagement.Data
         public int Id { get; set; }
 
         [Required]
+        [Display(Name ="First Name")]
         public string? FirstName { get; set; }
 
         [Required]
+        [Display(Name = "Last Name")]
         public string? LastName { get; set; }
 
-        [Required]
-        public string? Email { get; set; }
+
+        [NotMapped]
+        public string FullName
+        {
+            get { return $"{FirstName} {LastName}"; }
+        }
 
         [Required]
-        public string? PhoneNumber { get; set; }
+        public string Email { get; set; }
 
         [Required]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
+
+       
         [Display(Name ="Street Address")]
         public string? StreetAddress { get; set; }
 
         public string? City { get; set; }
 
-        public string State { get; set; }
+        public string? State { get; set; }
 
 
-        public string ZipCode { get; set; }
+        public string? ZipCode { get; set; }
 
         [Display(Name = "Date of Birth")]
         public DateTime DateOfBirth { get; set; }
@@ -54,7 +64,7 @@ namespace LogisticsManagement.Data
 
 
         [Display(Name = "Notes")]
-        public string DriverNotes { get; set; }
+        public string? DriverNotes { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
         [Display(Name = "Pay")]

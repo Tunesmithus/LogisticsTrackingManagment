@@ -11,86 +11,86 @@
     <div class="col-md-8 offset-1 ">
         <br />  
             <div class="bg-secondary round px-2 rounded">
-                <p class="fs-5 py-2"> Trip Details</p>
+                <p class="fs-5 py-2"><b class="text-white"> Trip Details</b></p>
             </div>
             <hr />
         <form method="Post" asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group mb-3 col-6">
-                <label asp-for="LoadNumber" class="control-label"></label>
+                <label asp-for="LoadNumber" class="control-label fw-bold"></label>
                 <input asp-for="LoadNumber" class="form-control" />
                 <span asp-validation-for="LoadNumber" class="text-danger"></span>
             </div>
             <div class="form-group mb-3 col-4">
-                <label asp-for="StartDate" class="control-label"></label>
+                <label asp-for="StartDate" class="control-label fw-bold"></label>
                 <input asp-for="StartDate" type="date" class="form-control" />
                 <span asp-validation-for="StartDate" class="text-danger"></span>
             </div>
            <div class="form-group mb-3 col-4">
-                <label asp-for="EndDate" class="control-label"></label>
+                <label asp-for="EndDate" class="control-label fw-bold"></label>
                 <input asp-for="EndDate" type = "date" class="form-control" />
                 <span asp-validation-for="EndDate" class="text-danger"></span>
             </div>
             <div class="form-group mb-3 col-8">
-                <label asp-for="DriverId" class="control-label"></label>
+                <label asp-for="DriverId" class="control-label fw-bold"></label>
                 <select asp-for ="DriverId" class = "form-select" asp-items ="ViewBag.DriverList">
                     <option disabled selected>--Select Driver--</option>
                 </select>
             </div>
              <div class="bg-secondary round px-2 rounded">
-                <p class="fs-5 py-2"> Rig Details</p>
+                <p class="fs-5 py-2"><b class="text-white">Rig Details</b></p>
             </div>
             <hr />
              <div class="form-group mb-3 col-8">
-                <label asp-for="TruckId" class="control-label"></label>
+                <label asp-for="TruckId" class="control-label fw-bold"></label>
                 <select asp-for ="TruckId" class = "form-select" asp-items ="ViewBag.TruckList">
                     <option disabled selected>--Select Truck--</option>
                 </select>
             </div>
             <div class="form-group mb-3 col-8">
-                <label asp-for="TrailerId" class="control-label"></label>
+                <label asp-for="TrailerId" class="control-label fw-bold"></label>
                 <select asp-for ="TrailerId" class = "form-select" asp-items ="ViewBag.TrailerList">
                     <option disabled selected>--Select Trailer--</option>
                 </select>
             </div>
 
             <div class="bg-secondary round px-2 rounded">
-                <p class="fs-5 py-2">Mileage<p>
+                <p class="fs-5 py-2"><b class="text-white">Mileage</b><p>
             </div>
             <hr />
             <div class="form-group mb-3 col-6">
-                <label asp-for="LoadedMiles" class="control-label"></label>
+                <label asp-for="LoadedMiles" class="control-label fw-bold"></label>
                 <input asp-for="LoadedMiles" class="form-control" />
                 <span asp-validation-for="LoadedMiles" class="text-danger"></span>
             </div>
             <div class="form-group mb-3 col-6">
-                <label asp-for="UnloadedMiles" class="control-label"></label>
+                <label asp-for="UnloadedMiles" class="control-label fw-bold"></label>
                 <input asp-for="UnloadedMiles" class="form-control" />
                 <span asp-validation-for="UnloadedMiles" class="text-danger"></span>
             </div>
             <div class="form-group mb-3 col-6">
-                <label asp-for="BobTailMiles" class="control-label"></label>
+                <label asp-for="BobTailMiles" class="control-label fw-bold"></label>
                 <input asp-for="BobTailMiles" class="form-control" />
                 <span asp-validation-for="BobTailMiles" class="text-danger"></span>
             </div>
             <div class="form-group mb-3 col-6">
-                <label asp-for="OtherMiles" class="control-label"></label>
+                <label asp-for="OtherMiles" class="control-label fw-bold"></label>
                 <input asp-for="OtherMiles" class="form-control" />
                 <span asp-validation-for="OtherMiles" class="text-danger"></span>
             </div>
              <div class="bg-secondary round px-2 rounded">
-                <p class="fs-5 py-2"> Revenue Details</p>
+                <p class="fs-5 py-2"><b class="text-white">Revenue Details</b></p>
             </div>
             <hr />
             <div class="form-group mb-3 col-6">
-                <label asp-for="DispatcherId" class="control-label"></label>
+                <label asp-for="DispatcherId" class="control-label fw-bold"></label>
                 <select asp-for ="DispatcherId" class = "form-select" asp-items ="ViewBag.DispatcherList">
                     <option><a asp-for ="Create" asp></a></option>
                     <option disabled selected>--Select Dispatcher--</option>
                 </select>
             </div>
             <div class="form-group mb-3 col-6">
-                <label asp-for="BrokerId" class="control-label"></label> 
+                <label asp-for="BrokerId" class="control-label fw-bold"></label> 
                 <a class="float-end" asp-action="Create" asp-controller="Broker"><i class="bi bi-plus-circle-fill"></i> Add Broker</a>
                 <select asp-for ="BrokerId" class = "form-select" asp-items ="ViewBag.BrokerList">
                     <option disabled selected>--Select Broker--</option>
@@ -98,17 +98,22 @@
                 
             </div>
             <div class="form-group mb-3 col-6">
-                <label asp-for="CargoWeight" class="control-label"></label>
+                <label asp-for="LoadPay" class="control-label fw-bold"></label>
+                <input asp-for="LoadPay" class="form-control" />
+                <span asp-validation-for="LoadPay" class="text-danger"></span>
+            </div>
+            <div class="form-group mb-3 col-6">
+                <label asp-for="CargoWeight" class="control-label fw-bold"></label>
                 <input asp-for="CargoWeight" class="form-control" />
                 <span asp-validation-for="CargoWeight" class="text-danger"></span>
             </div>
             <div class="form-group mb-3 col">
-                <label asp-for="CargoDescription" class="control-label"></label>
+                <label asp-for="CargoDescription" class="control-label fw-bold"></label>
                 <textarea asp-for="CargoDescription" class="form-control"></textarea>
                 <span asp-validation-for="CargoDescription" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-primary" /> |
                  <a class="btn btn-outline-danger" asp-action="Index">Back to List</a>
             </div>
         </form>

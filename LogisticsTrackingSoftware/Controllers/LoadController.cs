@@ -28,17 +28,17 @@ namespace LogisticsManagement.Web.Controllers
         public IActionResult Create()
         {
             var DriverList = unitOfWork.Driver.GetAll().Select(x => new SelectListItem
-            (text: x.FirstName, value: x.Id.ToString()));
+            (text: x.FullName, value: x.Id.ToString()));
 
             ViewBag.DriverList = DriverList;
 
             var TruckList = unitOfWork.Truck.GetAll().Select(x => new SelectListItem
-            (text: x.EquipmentNumber.ToString(), value: x.Id.ToString()));
+            (text: x.FullVehicleDescription.ToString(), value: x.Id.ToString()));
 
             ViewBag.TruckList = TruckList;
 
             var TrailerList = unitOfWork.Trailer.GetAll().Select(x => new SelectListItem
-            (text: x.EquipmentNumber.ToString(), value: x.Id.ToString()));
+            (text: x.FullTrailerDescription, value: x.Id.ToString()));
 
             ViewBag.TrailerList = TrailerList;
 

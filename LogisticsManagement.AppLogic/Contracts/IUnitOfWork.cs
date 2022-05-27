@@ -20,6 +20,8 @@ namespace LogisticsManagement.AppLogic.Contracts
 
         ISettlementRepository Settlement { get; }
 
+        IExpenseTypeRepository ExpenseType { get; }
+
         void Save();
     }
 }

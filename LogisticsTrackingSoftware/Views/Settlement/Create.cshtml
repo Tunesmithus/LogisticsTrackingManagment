@@ -19,34 +19,34 @@
       <div class="row">
         <div>
           <div class="bg-secondary round px-2 rounded">
-            <p class="fs-5 py-2">Settlement Details</p>
+            <p class="fs-5 py-2"><b class="text-white">Settlement Details</b></p>
           </div>
           <br />
           <br />
         </div>
         <div class="row mb-3">
-          <label asp-for="SettlementNumber" class="col-sm-2 col-form-label text-end"
+          <label asp-for="SettlementNumber" class="col-sm-2 col-form-label text-end fw-bold"
             >Reference</label>
           <div class="col-sm-3">
             <input type="text" class="form-control" id="inputEmail3" />
           </div>
         </div>
         <div class="row mb-3">
-          <label asp-for="PayrollStartDate" class="col-sm-2 col-form-label text-end"
+          <label asp-for="PayrollStartDate" class="col-sm-2 col-form-label text-end fw-bold"
             >Pay Week Start</label>
           <div class="col-sm-3">
             <input type="date" class="form-control" id="inputEmail3" />
           </div>
         </div>
         <div class="row mb-3">
-          <label asp-for="PayrollEndDate" class="col-sm-2 col-form-label text-end"
+          <label asp-for="PayrollEndDate" class="col-sm-2 col-form-label text-end fw-bold"
             >Pay Week End</label>
           <div class="col-sm-3">
             <input type="date" class="form-control" id="inputEmail3" />
           </div>
         </div>
         <div class="row mb-3">
-          <label asp-for="DriverId" class="col-sm-2 col-form-label text-end"
+          <label asp-for="DriverId" class="col-sm-2 col-form-label text-end fw-bold"
             >Driver</label>
           <div class="col-sm-5">
             <select asp-for="DriverId" class="form-select" asp-items="ViewBag.DriverList" id="inputEmail3">
@@ -55,7 +55,7 @@
           </div>
         </div>
         <div class="row mb-3">
-          <label asp-for="TruckId" class="col-sm-2 col-form-label text-end"
+          <label asp-for="TruckId" class="col-sm-2 col-form-label text-end fw-bold"
             >Truck</label>
           <div class="col-sm-5">
             <select asp-for="TruckId" class="form-select" asp-items="ViewBag.TruckList">
@@ -64,14 +64,14 @@
           </div>
         </div>
         <div class="row mb-3">
-          <label asp-for="DateCreated" class="col-sm-2 col-form-label text-end"
+          <label asp-for="DateCreated" class="col-sm-2 col-form-label text-end fw-bold"
             >Date</label>
           <div class="col-sm-3">
             <input type="date" class="form-control" id="" />
           </div>
         </div>
         <div class="border row mb-3">
-          <label asp-for="DriverInternalNote" class="col-sm-2 col-form-label"
+          <label asp-for="DriverInternalNote" class="col-sm-2 col-form-label fw-bold"
             >Internal Notes</label>
           <div class="py-3 col-sm-10">
             <textarea
@@ -86,15 +86,16 @@
       <div>
         <div class="bg-secondary round px-2 rounded">
           <p class="fs-5 py-2">
-            Trips<span
-              ><button class="btn btn-primary btn-sm float-end">
-                Add Trips
-              </button></span
+            <b class="text-white">Trips</b><span
+              ><button type="button" class="btn btn-primary btn-sm float-end" data-bs-toggle="modal" data-bs-target="#tripModal">
+                 Select Trips
+               </button></span
             >
           </p>
         </div>
         <!--Insert Popup Modal Here-->
-        <h5>Add modal syntax here</h5>
+        <!-- Modal -->
+        <partial name="_AddTripModalPartial"/>
       </div>
       <br />
       <br />
@@ -103,7 +104,7 @@
       <div>
         <div class="bg-secondary round px-2 rounded">
           <p class="fs-5 py-2">
-            Additional Driver Pay<span
+            <b class="text-white">Additional Driver Pay</b><span
               ><button class="btn btn-primary btn-sm float-end">
                 Add Item
               </button></span
@@ -146,34 +147,39 @@
       <div>
         <div class="bg-secondary round px-2 rounded">
           <p class="fs-5 py-2">
-            Reimbursements<span
-              ><button class="btn btn-primary btn-sm float-end">
-                Select Expenses
-              </button></span
+            <b class="text-white">Reimbursements</b><span
+              ><button type="button" class="btn btn-primary btn-sm float-end" data-bs-toggle="modal" data-bs-target="#reimbursementsModal">
+                 Select Reimbursements
+               </button></span
             >
           </p>
         </div>
         <p>Add expenses that should be reimbursed to the driver.</p>
+        <!-- Modal -->
+        <partial name="_AddReimbursementModalPartial"/>
+       
       </div>
       <br />
       <br />
       <div>
         <div class="bg-secondary round px-2 rounded">
           <p class="fs-5 py-2">
-            Deductions<span
-              ><button class="btn btn-primary btn-sm float-end">
-                Select Expenses
-              </button></span
+            <b class="text-white">Deductions</b><span
+              ><button type="button" class="btn btn-primary btn-sm float-end" data-bs-toggle="modal" data-bs-target="#deductionModal">
+                 Select Deductions
+               </button></span
             >
           </p>
         </div>
         <p>Add expenses that should be paid by the driver.</p>
+        <!-- Modal -->
+        <partial name="_AddDeductionModalPartial"/>
       </div>
       <br />
       <br />
       <div>
         <div class="bg-secondary round px-2 rounded">
-          <p class="fs-5 py-2">Summary</p>
+          <p class="fs-5 py-2"><b class="text-white">Summary</b></p>
         </div>
         <p>Previous Balance: <span>$0.00</span></p>
         <p>Trip Driver Pay: <span>$0.00</span></p>
@@ -189,7 +195,7 @@
       </div>
       <div>
         <div class="bg-secondary round px-2 rounded">
-          <p class="fs-5 py-2">Notes For Driver</p>
+          <p class="fs-5 py-2"><b class="text-white">Notes For Driver</b></p>
         </div>
         <textarea
           class="form-control"
