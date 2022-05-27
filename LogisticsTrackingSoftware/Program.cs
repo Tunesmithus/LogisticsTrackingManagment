@@ -73,6 +73,6 @@ app.MapControllerRoute(
 app.MapRazorPages();
 
 //seed database
-AppDbInitializer.Seed(app);
+//AppDbInitializer.Seed(app);
 
 app.Run();
