@@ -8,12 +8,11 @@ using System.Threading.Tasks;
 
 namespace LogisticsManagement.Data
 {
-    public class Expense
+    public class Deduction
     {
-
         public int Id { get; set; }
 
-        [Display(Name ="Date Of Expense")]
+        [Display(Name = "Date Of Expense")]
         public DateTime DateOfExpense { get; set; }
         public string? Description { get; set; }
 
@@ -34,7 +33,7 @@ namespace LogisticsManagement.Data
 
         [Display(Name = "Driver")]
         public int DriverId { get; set; }
-        
+
         [ForeignKey("DriverId")]
         public Driver Driver { get; set; }
 
@@ -42,22 +41,21 @@ namespace LogisticsManagement.Data
         public int LoadId { get; set; }
 
         [ForeignKey("LoadId")]
-       
+
         public Load Load { get; set; }
 
         [Display(Name = "Truck")]
         public int TruckId { get; set; }
 
         [ForeignKey("TruckId")]
-        
+
         public Truck Truck { get; set; }
 
         [Display(Name = "Trailer")]
         public int TrailerId { get; set; }
 
         [ForeignKey("TrailerId")]
-        
-        public Trailer Trailer { get; set; }
 
+        public Trailer Trailer { get; set; }
     }
 }

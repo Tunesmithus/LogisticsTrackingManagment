@@ -51,12 +51,21 @@ namespace LogisticsManagement.Data
         [DisplayName("Cargo Description")]
         public string? CargoDescription { get; set; }
 
+        public string FullLoadDescription
+        {
+            get
+            {
+                return $"{StartDate} -- {LoadNumber} -- ${LoadPay}";
+            }
+        }
+
 
         //Relationships
         [Required]
         [DisplayName("Broker")]
         public int BrokerId { get; set; }
 
+        
         [ForeignKey("BrokerId")]
         public Broker Broker { get; set; }
 

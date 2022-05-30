@@ -27,6 +27,9 @@ namespace LogisticsManagement.Web.Controllers
             var YearList = StaticList.GetYearList().Select(x => x.Text);
             ViewBag.YearList = YearList;
 
+            var ColorList = StaticList.GetColors().Select(x => x.Text);
+            ViewBag.ColorList = ColorList;
+
             var TrailerMakeList = StaticList.GetTrailerMakes().Select(x => x.Text);
             ViewBag.TrailerMakeList = TrailerMakeList;
             return View();

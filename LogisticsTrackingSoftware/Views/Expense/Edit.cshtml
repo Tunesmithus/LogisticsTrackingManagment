@@ -8,39 +8,39 @@
 <div class="container p-3">
        
 <div class="row">
-    <div class="col-md-8 offset-1 ">
+    <div class="col-md-8">
         <br />  
             <div class="bg-secondary round px-2 rounded">
-                <p class="fs-5 py-2"> Update Expense Details</p>
+                <p class="fs-5 py-2"><b class="text-white"> Update Expense Details</b></p>
             </div>
             <hr />
         <form method="Post" asp-action="Edit">
             <input asp-for="Id" hidden />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group mb-3 col-6">
-                <label asp-for="DateOfExpense" class="control-label"></label>
+                <label asp-for="DateOfExpense" class="control-label fw-bold"><span class="text-danger">*</span>Date Of Expense</label>
                 <input asp-for="DateOfExpense" class="form-control" />
                 <span asp-validation-for="DateOfExpense" class="text-danger"></span>
             </div>
             <div class="form-group mb-3 col-4">
-                <label asp-for="Amount" class="control-label"></label>
+                <label asp-for="Amount" class="control-label fw-bold"><span class="text-danger">*</span>Amount</label>
                 <input asp-for="Amount" type="number" class="form-control" />
                 <span asp-validation-for="Amount" class="text-danger"></span>
             </div>
            <div class="form-group mb-3 col-10">
-                <label asp-for="Description" class="control-label"></label>
+                <label asp-for="Description" class="control-label fw-bold"></label>
                 <textarea asp-for="Description" type="text" class="form-control"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group mb-3 col-8">
-                <label asp-for="ExpenseCategoryId" class="control-label"></label>
+                <label asp-for="ExpenseTypeId" class="control-label fw-bold"><span class="text-danger">*</span>Expense</label>
                 <a asp-action="Create" asp-controller="ExpenseType" class="float-end">Add New Category</a>
-                <select asp-for ="ExpenseCategoryId" class = "form-select" asp-items ="ViewBag.ExpenseTypeList">
+                <select asp-for ="ExpenseTypeId" class = "form-select" asp-items ="ViewBag.ExpenseTypeList">
                     <option disabled selected>--Select Category--</option>
                 </select>
             </div>
             <div class="form-group mb-3 col-8">
-                <label asp-for="DriverId" class="control-label"></label>
+                <label asp-for="DriverId" class="control-label fw-bold"><span class="text-danger">*</span>Driver</label>
                 <select asp-for ="DriverId" class = "form-select" asp-items ="ViewBag.DriverList">
                     <option disabled selected>--Select Driver--</option>
                 </select>
@@ -49,20 +49,20 @@
                 <p class="fs-5 py-2"> Rig Details</p>
             </div>
             <hr />
-            <div class="form-group mb-3 col-8">
-                <label asp-for="LoadId" class="control-label"></label>
+            <div class="form-group mb-3 col-6">
+                <label asp-for="LoadId" class="control-label fw-bold"><span class="text-danger">*</span>Load</label>
                 <select asp-for ="LoadId" class = "form-select" asp-items ="ViewBag.LoadList">
                     <option disabled selected>--Select Load Number--</option>
                 </select>
             </div>
-             <div class="form-group mb-3 col-8">
-                <label asp-for="TruckId" class="control-label"></label>
+             <div class="form-group mb-3 col-6">
+                <label asp-for="TruckId" class="control-label fw-bold"><span class="text-danger">*</span>Truck</label>
                 <select asp-for ="TruckId" class = "form-select" asp-items ="ViewBag.TruckList">
                     <option disabled selected>--Select Truck--</option>
                 </select>
             </div>
-            <div class="form-group mb-3 col-8">
-                <label asp-for="TrailerId" class="control-label"></label>
+            <div class="form-group mb-3 col-6">
+                <label asp-for="TrailerId" class="control-label fw-bold"><span class="text-danger">*</span>Trailer</label>
                 <select asp-for ="TrailerId" class = "form-select" asp-items ="ViewBag.TrailerList">
                     <option disabled selected>--Select Trailer--</option>
                 </select>

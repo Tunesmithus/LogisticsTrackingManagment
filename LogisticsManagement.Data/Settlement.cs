@@ -26,13 +26,8 @@ namespace LogisticsManagement.Data
         public DateTime PayrollEndDate { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
-        public decimal Expenses { get; set; }
-
-        [Column(TypeName = "decimal(18,2)")]
         public decimal AdditionalDriverPay { get;set; }
 
-        [Column(TypeName = "decimal(18,2)")]
-        public decimal Deductions { get; set; }
 
         [Column(TypeName = "decimal(18,2)")]
 

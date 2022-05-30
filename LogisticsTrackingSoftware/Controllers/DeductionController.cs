@@ -1,54 +1,64 @@
 ﻿using LogisticsManagement.AppLogic.Contracts;
-using LogisticsManagement.AppLogic.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace LogisticsManagement.Web.Controllers
 {
-    public class SettlementController : Controller
+    public class DeductionController : Controller
     {
         private readonly IUnitOfWork unitOfWork;
 
-        public SettlementController(IUnitOfWork unitOfWork)
+        public DeductionController(IUnitOfWork unitOfWork)
         {
             this.unitOfWork = unitOfWork;
         }
 
-        // GET: SettltementController
-        public IActionResult Index()
-        {
-            var settlementList = unitOfWork.Settlement.GetAll();
-            return View(settlementList);
-        }
-
-        // GET: SettltementController/Details/5
-        public IActionResult Details(int id)
+        // GET: ReimbursementController
+        public ActionResult Index()
         {
             return View();
         }
 
-        // GET: SettltementController/Create
-        public IActionResult Create()
+        // GET: ReimbursementController/Details/5
+        public ActionResult Details(int id)
         {
+            return View();
+        }
+
+        // GET: ReimbursementController/Create
+        public ActionResult Create()
+        {
+            var ExpenseTypeList = unitOfWork.ExpenseType.GetAll().Select(x => new SelectListItem(text: x.ExpenseCategory,
+                value: x.Id.ToString()));
+
+            ViewBag.ExpenseTypeList = ExpenseTypeList;
+
             var DriverList = unitOfWork.Driver.GetAll().Select(x => new SelectListItem
             (text: x.FullName, value: x.Id.ToString()));
 
             ViewBag.DriverList = DriverList;
 
             var TruckList = unitOfWork.Truck.GetAll().Select(x => new SelectListItem
-            (text: x.FullVehicleDescription.ToString(), value: x.Id.ToString()));
+            (text: x.FullVehicleDescription, value: x.Id.ToString()));
 
             ViewBag.TruckList = TruckList;
 
-  
+            var TrailerList = unitOfWork.Trailer.GetAll().Select(x => new SelectListItem
+            (text: x.FullTrailerDescription.ToString(), value: x.Id.ToString()));
+
+            ViewBag.TrailerList = TrailerList;
+
+            var LoadList = unitOfWork.Load.GetAll().Select(x => new SelectListItem(text: x.FullLoadDescription, value: x.Id.ToString()));
+            ViewBag.LoadList = LoadList;
+
             return View();
         }
 
-        // POST: SettltementController/Create
+        // POST: ReimbursementController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(IFormCollection collection)
+        public ActionResult Create(IFormCollection collection)
         {
             try
             {
@@ -60,16 +70,16 @@ namespace LogisticsManagement.Web.Controllers
             }
         }
 
-        // GET: SettltementController/Edit/5
-        public IActionResult Edit(int id)
+        // GET: ReimbursementController/Edit/5
+        public ActionResult Edit(int id)
         {
             return View();
         }
 
-        // POST: SettltementController/Edit/5
+        // POST: ReimbursementController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(int id, IFormCollection collection)
         {
             try
             {
@@ -81,16 +91,16 @@ namespace LogisticsManagement.Web.Controllers
             }
         }
 
-        // GET: SettltementController/Delete/5
-        public IActionResult Delete(int id)
+        // GET: ReimbursementController/Delete/5
+        public ActionResult Delete(int id)
         {
             return View();
         }
 
-        // POST: SettltementController/Delete/5
+        // POST: ReimbursementController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id, IFormCollection collection)
         {
             try
             {
@@ -101,15 +111,5 @@ namespace LogisticsManagement.Web.Controllers
                 return View();
             }
         }
-
-        #region API CALLS
-        [HttpGet]
-        public IActionResult GetAll()
-        {
-            var settlementList = unitOfWork.Settlement.GetAll();
-            return Json(new { data = settlementList });
-        }
-
-        #endregion
     }
 }

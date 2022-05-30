@@ -1,4 +1,4 @@
-﻿@model LogisticsManagement.Data.Expense
+﻿@model LogisticsManagement.Data.Deduction
 
 @{
     ViewData["Title"] = "Create";
@@ -8,19 +8,18 @@
 <div class="container p-3">
        
 <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-8 offset-1 ">
         <br />  
             <div class="bg-secondary round px-2 rounded">
-                <p class="fs-5 py-2"><b class="text-white">Expense Details</b></p>
+                <p class="fs-5 py-2"><b class="text-white">Deduction Details</b></p>
             </div>
             
             <hr />
         <form method="Post" asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="offset-1">
             <div class="form-group mb-3 col-6">
                 <label asp-for="DateOfExpense" class="control-label fw-bold"><span class="text-danger">*</span>Date Of Expense</label>
-                <input asp-for="DateOfExpense" class="form-control" />
+                <input asp-for="DateOfExpense" class="form-control" type="date" />
                 <span asp-validation-for="DateOfExpense" class="text-danger"></span>
             </div>
             <div class="form-group mb-3 col-4">
@@ -34,7 +33,7 @@
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
             <div class="form-group mb-3 col-8">
-                <label asp-for="ExpenseTypeId" class="control-label fw-bold"><span class="text-danger">*</span>Expense</label>
+                <label asp-for="ExpenseTypeId" class="control-label fw-bold"><span class="text-danger">*</span>Deduction Category</label>
                 <a asp-action="Create" asp-controller="ExpenseType" class="float-end">Add New Category</a>
                 <select asp-for ="ExpenseTypeId" class = "form-select" asp-items ="ViewBag.ExpenseTypeList">
                     <option disabled selected>--Select Category--</option>
@@ -46,26 +45,24 @@
                     <option disabled selected>--Select Driver--</option>
                 </select>
             </div>
-            </div>
             <div class="bg-secondary round px-2 rounded">
                 <p class="fs-5 py-2"><b class="text-white">Rig Details</b></p>
             </div>
             <hr />
-            <div class="offset-1">
-            <div class="form-group mb-3 col-6">
-                <label asp-for="LoadId" class="control-label fw-bold">Load</label>
+            <div class="form-group mb-3 col-8">
+                <label asp-for="LoadId" class="control-label fw-bold"><span class="text-danger">*</span>Load</label>
                 <select asp-for ="LoadId" class = "form-select" asp-items ="ViewBag.LoadList">
                     <option disabled selected>--Select Load Number--</option>
                 </select>
             </div>
-             <div class="form-group mb-3 col-6">
-                <label asp-for="TruckId" class="control-label fw-bold">Truck</label>
+             <div class="form-group mb-3 col-8">
+                <label asp-for="TruckId" class="control-label fw-bold"><span class="text-danger">*</span>Truck</label>
                 <select asp-for ="TruckId" class = "form-select" asp-items ="ViewBag.TruckList">
                     <option disabled selected>--Select Truck--</option>
                 </select>
             </div>
-            <div class="form-group mb-3 col-6">
-                <label asp-for="TrailerId" class="control-label fw-bold">Trailer</label>
+            <div class="form-group mb-3 col-8">
+                <label asp-for="TrailerId" class="control-label fw-bold"><span class="text-danger">*</span>Trailer</label>
                 <select asp-for ="TrailerId" class = "form-select" asp-items ="ViewBag.TrailerList">
                     <option disabled selected>--Select Trailer--</option>
                 </select>
@@ -75,7 +72,6 @@
             <div class="form-group mb-3">
                 <input type="submit" value="Create" class="btn btn-primary" />
                  <a class="btn btn-outline-danger" asp-action="Index">Back to List</a>
-            </div>
             </div>
         </form>
     </div>
@@ -92,5 +88,6 @@
     }
     
 }
+
 
 

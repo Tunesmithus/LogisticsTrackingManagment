@@ -4,57 +4,60 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit Driver Details</h1>
+<h1>Edit Trailer Details</h1>
 
 <hr />
 <div class="row">
-    <div class="col-md-6 offset-1 ">
+    <div class="col-md-12">
         <div>
-            <a asp-controller="Trailers" asp-action="Index" class="text-danger"><i class="bi bi-arrow-left-short"></i>Discard Changes</a>
+            <a asp-controller="Trailer" asp-action="Index" class="text-danger"><i class="bi bi-arrow-left-short"></i>Discard Changes</a>
         </div>
         <br />  
-            <div class="bg-secondary round px-2 rounded">
-                <p class="fs-5 py-2">Trailer Details</p>
+           <div class="bg-secondary round px-2 rounded">
+                <p class="fs-5 py-2"><b class="text-white">Update Trailer Details</b></p>
             </div>
             
             <hr />
         <form method="post" asp-action="Edit">
+            
             <input asp-for="@Model.Id" hidden />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="offset-1">
+            
             <div class="form-group mb-3">
-                <label asp-for="Year" class="control-label"></label>
+                <label asp-for="Year" class="control-label fw-bold"></label>
                 <input asp-for="Year" class="form-control" />
                 <span asp-validation-for="Year" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group mb-3">
-                <label asp-for="Make" class="control-label"></label>
+                <label asp-for="Make" class="control-label fw-bold"></label>
                 <input asp-for="Make" class="form-control" />
                 <span asp-validation-for="Make" class="text-danger"></span>
             </div>
             <br />
             <div class="form-group mb-3">
-                <label asp-for="TrailerType" class="control-label"></label>
+                <label asp-for="TrailerType" class="control-label fw-bold"></label>
                 <input asp-for="TrailerType" class="form-control" />
                 <span asp-validation-for="TrailerType" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
-                <label asp-for="EquipmentNumber" class="control-label"></label>
+                <label asp-for="EquipmentNumber" class="control-label fw-bold"></label>
                 <input asp-for="EquipmentNumber" class="form-control" />
                 <span asp-validation-for="EquipmentNumber" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
-                <label asp-for="VinNumber" class="control-label"></label>
+                <label asp-for="VinNumber" class="control-label fw-bold"></label>
                 <input asp-for="VinNumber" class="form-control" />
                 <span asp-validation-for="VinNumber" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
-                <label asp-for="Color" class="control-label"></label>
+                <label asp-for="Color" class="control-label fw-bold"></label>
                 <input asp-for="Color" class="form-control" />
                 <span asp-validation-for="Color" class="text-danger"></span>
             </div>
             <div class="form-group mb-3">
-                <label asp-for="Description" class="control-label"></label>
+                <label asp-for="Description" class="control-label fw-bold"></label>
                 <textarea asp-for="Description" class="form-control"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
             </div>
@@ -63,6 +66,7 @@
 
                 <input type="submit" value="Update" class="btn btn-primary" />
                  <a class="btn btn-outline-danger" asp-action="Index">Back to List</a>
+            </div>
             </div>
         </form>
     </div>

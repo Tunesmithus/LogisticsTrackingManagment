@@ -88,10 +88,10 @@
                                     <i class="fs-4 bi-speedometer2"></i><span class="ms-1 d-none d-sm-inline text-dark">Trips</span></a>
                                 <ul class="collapse nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                     <li class="w-100">
-                                        <a asp-action="Create" asp-controller="Load" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Add Trip </span></a>
+                                        <a asp-action="Create" asp-controller="Load" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">-Add Trip </span></a>
                                     </li>
                                     <li>
-                                        <a asp-action="Index" asp-controller="Load" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Existing Trip</span></a>
+                                        <a asp-action="Index" asp-controller="Load" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">-Existing Trip</span></a>
                                     </li>
                                 </ul>
                             </li>
@@ -101,10 +101,10 @@
                                     <i class="fs-4 bi bi-coin"></i><span class="ms-1 d-none d-sm-inline text-dark">Brokers</span> </a>
                                 <ul class="collapse nav flex-column ms-1" id="submenu2" data-bs-parent="#menu">
                                     <li class="w-100">
-                                        <a asp-action="Create" asp-controller="Broker" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Add Broker</span> 1</a>
+                                        <a asp-action="Create" asp-controller="Broker" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">-Add Broker</span> 1</a>
                                     </li>
                                     <li>
-                                        <a asp-action="Index" asp-controller="Broker" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Existing Broker</span> 2</a>
+                                        <a asp-action="Index" asp-controller="Broker" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">-Existing Broker</span> 2</a>
                                     </li>
                                 </ul>
                             </li>
@@ -120,6 +120,19 @@
                                     </li>
                                 </ul>
                             </li>
+                            <li>
+                                <a href="#submenu5" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
+                                    <i class="fs-4 bi bi-coin"></i><span class="ms-1 d-none d-sm-inline text-dark">Deductions</span> </a>
+                                <ul class="collapse nav flex-column ms-1" id="submenu5" data-bs-parent="#menu">
+                                    <li class="w-100">
+                                        <a asp-action="Create" asp-controller="Deduction" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Add Deductions</span></a>
+                                    </li>
+                                    <li>
+                                        <a asp-action="Index" asp-controller="Deduction" class="nav-link px-0"> <span class="d-none d-sm-inline text-dark">Existing Deductions</span></a>
+                                    </li>
+                                </ul>
+                            </li>
+
                             <li class="nav-item">
                                 <a asp-action="Index" asp-controller="Dispatcher" class="nav-link align-middle px-0">
                                     <i class="FS-4 bi bi-telephone"></i> <span class="ms-1 d-none d-sm-inline text-dark">Dispatcher</span>

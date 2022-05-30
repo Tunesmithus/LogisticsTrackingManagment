@@ -29,6 +29,8 @@ namespace LogisticsTrackingSoftware.Data
         public DbSet<Trailer> Trailers { get; set; }
         public DbSet<Settlement> Settlements { get; set; }
         public DbSet<ExpenseType> ExpenseTypes { get; set; }
+        public DbSet<Expense> Expenses { get; set; }
+        public DbSet<Deduction> Deductions { get; set; }
 
        
     }

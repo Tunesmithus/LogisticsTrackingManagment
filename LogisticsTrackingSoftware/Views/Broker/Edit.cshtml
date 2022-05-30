@@ -7,32 +7,32 @@
 <div class="container p-3">
        
 <div class="row">
-    <div class="col-md-8 offset-1 ">
+    <div class="col-md-8">
         <br />  
             <div class="bg-secondary round px-2 rounded">
-                <p class="fs-5 py-2"><b class="text-white"> Update Broker</b></p>
+                <p class="fs-5 py-2"><b class="text-white">Update Broker</b></p>
             </div>
             <hr />
         <form method="Post" asp-action="Edit">
             <input asp-for = "@Model.Id" hidden />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group mb-3 col">
-                <label asp-for="CompanyName" class="control-label"></label>
+            <div class="form-group mb-3 col-5">
+                <label asp-for="CompanyName" class="control-label"><span class="text-danger">*</span>Company Name</label>
                 <input asp-for="CompanyName" class="form-control" />
                 <span asp-validation-for="CompanyName" class="text-danger"></span>
             </div>
-           <div class="form-group mb-3">
-                <label asp-for="City" class="control-label"></label>
+           <div class="form-group mb-3 col-6">
+                <label asp-for="City" class="control-label"><span class="text-danger">*</span>City</label>
                 <input asp-for="City" class="form-control" />
                 <span asp-validation-for="City" class="text-danger"></span>
             </div>
-            <div class="form-group mb-3">
-                <label asp-for="State" class="control-label"></label>
+            <div class="form-group mb-3 col-4">
+                <label asp-for="State" class="control-label"><span class="text-danger">*</span>State</label>
                 <input asp-for="State" class="form-control" />
                 <span asp-validation-for="State" class="text-danger"></span>
             </div>
-            <div class="form-group mb-3">
-                <label asp-for="ZipCode" class="control-label"></label>
+            <div class="form-group mb-3 col-3">
+                <label asp-for="ZipCode" class="control-label"><span class="text-danger">*</span>Postal Code</label>
                 <input asp-for="ZipCode" class="form-control" />
                 <span asp-validation-for="ZipCode" class="text-danger"></span>
             </div>

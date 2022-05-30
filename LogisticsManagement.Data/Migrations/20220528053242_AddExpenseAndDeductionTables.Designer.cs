@@ -4,6 +4,7 @@ using LogisticsTrackingSoftware.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LogisticsManagement.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220528053242_AddExpenseAndDeductionTables")]
+    partial class AddExpenseAndDeductionTables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,17 +106,17 @@ namespace LogisticsManagement.Data.Migrations
                             Id = "5a98663f-baa0-448d-8a26-7c6218a568d4",
                             AccessFailedCount = 0,
                             CompanyName = "Major Key Trucking",
-                            ConcurrencyStamp = "c7af62c3-fe1d-4b99-b8a0-b8a4c041f104",
+                            ConcurrencyStamp = "1cb3077b-d5a0-46a0-bdcf-9a3bdf98f952",
                             Email = "admin@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "Channing",
                             LastName = "Robertson",
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBvOqNFKMNln8sI9n+4sgBxHCj+5+O9OL2ZZ96hGbG5YgxzTeXyd+lXVIZooP/ziMA==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFXmSYaTssPonzlFysTUQrrWlxi1oq82rJrDK+r/xt1LKF8CER5oErxrrjZOj/Q5bw==",
                             PhoneNumber = "6013108018",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "bea41ac6-d286-4a58-a92b-d114ee63f3a4",
+                            SecurityStamp = "21e9eb4d-9fa8-4923-8982-7d89d0b81b5e",
                             TwoFactorEnabled = false
                         },
                         new
@@ -122,17 +124,17 @@ namespace LogisticsManagement.Data.Migrations
                             Id = "94c39c00-deb8-4e14-9482-7509a60ad572",
                             AccessFailedCount = 0,
                             CompanyName = "Major Key Trucking",
-                            ConcurrencyStamp = "17eaafad-9473-4d81-b72c-18c1ae220d2d",
+                            ConcurrencyStamp = "8ee7fe54-09c8-4871-825d-a9c45b2ac702",
                             Email = "user@localhost.com",
                             EmailConfirmed = true,
                             FirstName = "Kingston",
                             LastName = "Robertson",
                             LockoutEnabled = false,
                             NormalizedEmail = "USER@LOCALHOST.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEP4LnPfH6PuKUtfzRZQKLFq9R39rZkv25Z8kW4JDjCQudR09gV6/AqLAlhPSVrVN4g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDUfMsdbEeyWGXN+3dbMb+shq2/tZIZHPxHm4HmXGxXVI0Znud+CbWsHd6poWw5QDA==",
                             PhoneNumber = "6013108018",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c8066a93-9f44-4b97-bf4e-9c8de81a4e2f",
+                            SecurityStamp = "1b1504d1-e7dd-4c4b-a96b-1deaea9c981f",
                             TwoFactorEnabled = false
                         });
                 });
@@ -164,59 +166,6 @@ namespace LogisticsManagement.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Brokers");
-                });
-
-            modelBuilder.Entity("LogisticsManagement.Data.Deduction", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<decimal>("Amount")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<DateTime>("DateOfExpense")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("DriverId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ExpenseTypeId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("LoadId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Notes")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Odometer")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TrailerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TruckId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DriverId");
-
-                    b.HasIndex("ExpenseTypeId");
-
-                    b.HasIndex("LoadId");
-
-                    b.HasIndex("TrailerId");
-
-                    b.HasIndex("TruckId");
-
-                    b.ToTable("Deductions");
                 });
 
             modelBuilder.Entity("LogisticsManagement.Data.Dispatcher", b =>
@@ -320,7 +269,14 @@ namespace LogisticsManagement.Data.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("DriverId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ExpenseCategoryId")
                         .HasColumnType("int");
 
                     b.Property<int>("ExpenseTypeId")
@@ -354,6 +310,8 @@ namespace LogisticsManagement.Data.Migrations
                     b.HasIndex("TruckId");
 
                     b.ToTable("Expenses");
+
+                    b.HasDiscriminator<string>("Discriminator").HasValue("Expense");
                 });
 
             modelBuilder.Entity("LogisticsManagement.Data.ExpenseType", b =>
@@ -630,14 +588,14 @@ namespace LogisticsManagement.Data.Migrations
                         new
                         {
                             Id = "cac43a6e-f7bb-4448-baaf-ladd431ccbbf",
-                            ConcurrencyStamp = "d3ad896b-f9e2-4e4a-9dfa-cbf71a4e3346",
+                            ConcurrencyStamp = "39f78539-eda3-425e-96d6-41a35470c149",
                             Name = "Administrator",
                             NormalizedName = "ADMINISTRATOR"
                         },
                         new
                         {
                             Id = "34c39c00-deb8-4e14-9482-7509a60ad573",
-                            ConcurrencyStamp = "563ec0c1-ed40-428d-bb33-4f3407408849",
+                            ConcurrencyStamp = "054b0aef-6fdb-4cef-91fd-44fd9f1cb299",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -767,45 +725,9 @@ namespace LogisticsManagement.Data.Migrations
 
             modelBuilder.Entity("LogisticsManagement.Data.Deduction", b =>
                 {
-                    b.HasOne("LogisticsManagement.Data.Driver", "Driver")
-                        .WithMany()
-                        .HasForeignKey("DriverId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasBaseType("LogisticsManagement.Data.Expense");
 
-                    b.HasOne("LogisticsManagement.Data.ExpenseType", "ExpenseType")
-                        .WithMany()
-                        .HasForeignKey("ExpenseTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LogisticsManagement.Data.Load", "Load")
-                        .WithMany()
-                        .HasForeignKey("LoadId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LogisticsManagement.Data.Trailer", "Trailer")
-                        .WithMany()
-                        .HasForeignKey("TrailerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("LogisticsManagement.Data.Truck", "Truck")
-                        .WithMany()
-                        .HasForeignKey("TruckId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Driver");
-
-                    b.Navigation("ExpenseType");
-
-                    b.Navigation("Load");
-
-                    b.Navigation("Trailer");
-
-                    b.Navigation("Truck");
+                    b.HasDiscriminator().HasValue("Deduction");
                 });
 
             modelBuilder.Entity("LogisticsManagement.Data.Expense", b =>

@@ -27,7 +27,7 @@
                   Pay:<span class="float-end">@Model.LoadPay.ToString("c")</span>
                 </h5>
                 <h5 class="card-text fs-6">
-                  RPM: <span class="float-end">@((Model.LoadPay/Model.LoadedMiles).ToString("c"))</span>
+                  RPM: <span class="float-end">@((Model.LoadPay/(Model.LoadedMiles + Model.UnloadedMiles + Model.OtherMiles + Model.BobTailMiles)).ToString("c"))</span>
                 </h5>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
               </div>
