@@ -1,4 +1,5 @@
 ﻿using LogisticsManagement.AppLogic.Contracts;
+using LogisticsManagement.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -17,7 +18,8 @@ namespace LogisticsManagement.Web.Controllers
         // GET: ExpenseController
         public IActionResult Index()
         {
-            return View();
+            var expenseList = unitOfWork.Expense.GetAll(includeProperties: "Driver,Truck,Trailer,Load,ExpenseType");
+            return View(expenseList);
         }
 
         // GET: ExpenseController/Details/5
@@ -49,7 +51,7 @@ namespace LogisticsManagement.Web.Controllers
 
             ViewBag.TrailerList = TrailerList;
 
-            var LoadList = unitOfWork.Load.GetAll().Select(x => new SelectListItem(text: x.LoadNumber, value: x.Id.ToString()));
+            var LoadList = unitOfWork.Load.GetAll().Select(x => new SelectListItem(text: x.FullLoadDescription, value: x.Id.ToString()));
             ViewBag.LoadList = LoadList;
 
 
@@ -59,22 +61,37 @@ namespace LogisticsManagement.Web.Controllers
         // POST: ExpenseController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(IFormCollection collection)
+        public IActionResult Create(Expense expense)
         {
             try
             {
+                if (ModelState.IsValid == true)
+                {
+                    unitOfWork.Expense.Add(expense);
+                    unitOfWork.Save();
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View(expense);
             }
         }
 
         // GET: ExpenseController/Edit/5
-        public IActionResult Edit(int id)
+        public IActionResult Edit(int? id)
         {
-            return View();
+            var expense = unitOfWork.Expense.GetFirstOrDefault(x => x.Id == id);
+            if (expense == null)
+            {
+                return NotFound();
+            }
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            return View(expense);
         }
 
         // POST: ExpenseController/Edit/5

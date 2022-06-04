@@ -1,0 +1,82 @@
+﻿@model IEnumerable<LogisticsManagement.Data.Expense>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th hidden>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfExpense)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Amount)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Odometer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpenseTypeId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DriverId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoadId)
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td hidden>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfExpense)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Amount)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Odometer)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.ExpenseType.ExpenseCategory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Driver.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Load.LoadNumber)
+            </td>
+            
+            <td>
+                <div class="dropdown">
+                  <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    Options
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                    <li><a class="dropdown-item" asp-action="Edit" asp-controller="Expense" asp-route-id=@item.Id>Edit</a></li>
+                    <li><a class="dropdown-item" asp-action="Details" asp-controller="Expense" asp-route-id=@item.Id>Details</a></li>
+                    <li><a class="dropdown-item" asp-action="Delete" asp-controller="Expense" asp-route-id=@item.Id>Delete</a></li>
+                  </ul>
+
+                </div>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

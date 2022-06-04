@@ -1,4 +1,5 @@
 ﻿using LogisticsManagement.AppLogic.Contracts;
+using LogisticsManagement.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -15,19 +16,20 @@ namespace LogisticsManagement.Web.Controllers
         }
 
         // GET: ReimbursementController
-        public ActionResult Index()
+        public IActionResult Index()
         {
-            return View();
+            var dedutionList = unitOfWork.Deduction.GetAll(includeProperties:"Driver,Truck,Trailer,Load,ExpenseType");
+            return View(dedutionList);
         }
 
         // GET: ReimbursementController/Details/5
-        public ActionResult Details(int id)
+        public IActionResult Details(int id)
         {
             return View();
         }
 
         // GET: ReimbursementController/Create
-        public ActionResult Create()
+        public IActionResult Create()
         {
             var ExpenseTypeList = unitOfWork.ExpenseType.GetAll().Select(x => new SelectListItem(text: x.ExpenseCategory,
                 value: x.Id.ToString()));
@@ -55,44 +57,67 @@ namespace LogisticsManagement.Web.Controllers
             return View();
         }
 
-        // POST: ReimbursementController/Create
+        // POST: DeductionController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public IActionResult Create(Deduction deduction)
         {
             try
             {
+                if(ModelState.IsValid == true)
+                {
+                    unitOfWork.Deduction.Add(deduction);
+                    unitOfWork.Save();
+                    return RedirectToAction(nameof(Index));
+                }
+                
+            }
+            catch
+            {
+                return View(deduction);
+            }
+
+            return View(deduction);
+        }
+
+        // GET: DeductionController/Edit/5
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var deductionEdit = unitOfWork.Deduction.GetFirstOrDefault(x => x.Id == id);
+
+            if (deductionEdit == null)
+            {
+                return NotFound();
+            }
+            if (id == 0)
+            {
+                return NotFound();
+            }
+            return View(deductionEdit);
+        }
+
+        // POST: DeductionController/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Edit(Deduction deduction)
+        {
+            try
+            {
+                if (ModelState.IsValid == true)
+                {
+                    unitOfWork.Deduction.Update(deduction);
+                }
                 return RedirectToAction(nameof(Index));
             }
             catch
             {
-                return View();
+                return View(deduction);
             }
         }
 
-        // GET: ReimbursementController/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: ReimbursementController/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: ReimbursementController/Delete/5
-        public ActionResult Delete(int id)
+        // GET: DeductionController/Delete/5
+        public IActionResult Delete(int id)
         {
             return View();
         }
@@ -100,7 +125,7 @@ namespace LogisticsManagement.Web.Controllers
         // POST: ReimbursementController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public IActionResult Delete(int id, IFormCollection collection)
         {
             try
             {

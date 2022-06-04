@@ -22,6 +22,10 @@ namespace LogisticsManagement.AppLogic.Contracts
 
         IExpenseTypeRepository ExpenseType { get; }
 
+        IDeductionRepository Deduction { get; }
+
+        IExpenseRepository Expense { get; }
+
         void Save();
     }
 }

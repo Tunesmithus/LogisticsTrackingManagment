@@ -24,6 +24,9 @@ namespace LogisticsManagement.AppLogic.Repositories
             Load = new LoadRepository(context);
             Settlement = new SettlementRepository(context);
             ExpenseType = new ExpenseTypeRepository(context);
+            Deduction = new DeductionRepository(context);
+            Expense = new ExpenseRepository(context);
+
         }
 
         public IDriversRepository Driver { get; private set; }
@@ -38,6 +41,9 @@ namespace LogisticsManagement.AppLogic.Repositories
         public ISettlementRepository Settlement { get; private set; }
 
         public IExpenseTypeRepository ExpenseType { get; private set; }
+
+        public IDeductionRepository Deduction { get; private set; }
+        public IExpenseRepository  Expense { get; private set; }
 
         public void Save()
         {
